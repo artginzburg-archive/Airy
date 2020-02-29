@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
 		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
 		3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81A240B21220070C478 /* MouseHandlerView.swift */; };
+		3179E820240B2BFE0070C478 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* HotKey */; };
 		31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */; };
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3179E820240B2BFE0070C478 /* HotKey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +101,9 @@
 			dependencies = (
 			);
 			name = Airy;
+			packageProductDependencies = (
+				3179E81F240B2BFE0070C478 /* HotKey */,
+			);
 			productName = Airy;
 			productReference = 31BB6015240AC1BD00DC71C3 /* Airy.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +132,9 @@
 				Base,
 			);
 			mainGroup = 31BB600C240AC1BD00DC71C3;
+			packageReferences = (
+				3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */,
+			);
 			productRefGroup = 31BB6016240AC1BD00DC71C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3179E81F240B2BFE0070C478 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31BB600D240AC1BD00DC71C3 /* Project object */;
 }
