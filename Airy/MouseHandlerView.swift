@@ -1,11 +1,3 @@
-//
-//  mouseHandlerView.swift
-//  Airy
-//
-//  Created by Arthur Ginzburg on 01.03.2020.
-//  Copyright © 2020 Art Ginzburg. All rights reserved.
-//
-
 import Cocoa
 
 class MouseHandlerView: NSView {
@@ -14,6 +6,12 @@ class MouseHandlerView: NSView {
   
   override func mouseDown(with event: NSEvent) {
     onLeftMouseDown == nil ? super.mouseDown(with: event) : onLeftMouseDown!()
+  }
+  
+  var onLeftMouseUp: (()->())? = nil
+  
+  override func mouseUp(with event: NSEvent) {
+    onLeftMouseUp == nil ? super.mouseUp(with: event) : onLeftMouseUp!()
   }
   
   var onRightMouseDown: (()->())? = nil

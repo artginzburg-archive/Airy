@@ -21,15 +21,7 @@
         </customObject>
         <menu id="bem-wD-BUb" userLabel="Status Menu">
             <items>
-                <menuItem title="Item 1" id="m9u-JH-wUp">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" id="lCB-AZ-9AI">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" id="tam-Xe-jfU">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
+                <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" id="LCj-ve-BfE">
                     <connections>
                         <action selector="terminate:" target="-1" id="fgP-QA-FSt"/>

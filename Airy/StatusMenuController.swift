@@ -1,11 +1,3 @@
-//
-//  StatusMenuController.swift
-//  Airy
-//
-//  Created by Arthur Ginzburg on 29.02.2020.
-//  Copyright © 2020 Art Ginzburg. All rights reserved.
-//
-
 import Cocoa
 
 let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -14,10 +6,12 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   let bluetooth = BluetoothConnector()
   
+  var action: (()->())? = nil
+  
   @IBOutlet weak var statusMenu: NSMenu!
   
   override func awakeFromNib() {
-//    statusItem.menu = statusMenu
+    statusItem.menu = statusMenu
     statusMenu.delegate = self
     
     guard let button = statusItem.button else { return }
@@ -26,6 +20,25 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     statusIcon?.isTemplate = true
     button.image = statusIcon
     button.target = self
+    
+    let mouseView = MouseHandlerView(frame: button.frame)
+    
+    mouseView.onLeftMouseDown = {
+      button.highlight(true)
+      if self.action != nil {
+        self.action!()
+      }
+    }
+    
+    mouseView.onLeftMouseUp = {
+      button.highlight(false)
+    }
+    
+    mouseView.onRightMouseDown = {
+      button.performClick(NSApp.currentEvent)
+    }
+    
+    button.addSubview(mouseView)
     
     bluetooth.register(listener: self)
     
@@ -37,11 +50,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if bluetooth.isConnected {
       button.image = NSImage(named: "icon-inverted")
-      button.action = #selector(disconnect(_:))
+      action = {
+//        self.disconnect(_:)
+        self.disconnect(Any?.self)
+      }
       button.toolTip = bluetooth.bluetoothDevice.name
     } else {
       button.image = NSImage(named: "icon")
-      button.action = #selector(connect(_:))
+      action = {
+//        self.connect(_:)
+        self.connect(Any?.self)
+      }
     }
   }
   
@@ -53,11 +72,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     self.setStatusItemIProps()
   }
   
-  @objc func connect(_ sender: Any?) {
+  func connect(_ sender: Any?) {
     bluetooth.connect()
   }
   
-  @objc func disconnect(_ sender: Any?) {
+  func disconnect(_ sender: Any?) {
     bluetooth.disconnect()
   }
   
