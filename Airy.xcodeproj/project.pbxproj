@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */; };
+		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
+		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
+		3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81A240B21220070C478 /* MouseHandlerView.swift */; };
+		31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */; };
+		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
+		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
+		31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6026240AC28100DC71C3 /* StatusMenuController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
+		3179E814240B19F90070C478 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
+		3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+momentaryHighlight.swift"; sourceTree = "<group>"; };
+		3179E81A240B21220070C478 /* MouseHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseHandlerView.swift; sourceTree = "<group>"; };
+		31BB6015240AC1BD00DC71C3 /* Airy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		31BB601A240AC1C300DC71C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31BB601D240AC1C300DC71C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		31BB601F240AC1C300DC71C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31BB6020240AC1C300DC71C3 /* Airy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Airy.entitlements; sourceTree = "<group>"; };
+		31BB6026240AC28100DC71C3 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		31BB6012240AC1BD00DC71C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3179E817240B1DC00070C478 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		31BB600C240AC1BD00DC71C3 = {
+			isa = PBXGroup;
+			children = (
+				31BB6017240AC1BD00DC71C3 /* Airy */,
+				31BB6016240AC1BD00DC71C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		31BB6016240AC1BD00DC71C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				31BB6015240AC1BD00DC71C3 /* Airy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		31BB6017240AC1BD00DC71C3 /* Airy */ = {
+			isa = PBXGroup;
+			children = (
+				3179E817240B1DC00070C478 /* Extensions */,
+				31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */,
+				31BB6026240AC28100DC71C3 /* StatusMenuController.swift */,
+				3179E814240B19F90070C478 /* BluetoothConnector.swift */,
+				3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */,
+				3179E81A240B21220070C478 /* MouseHandlerView.swift */,
+				31BB601A240AC1C300DC71C3 /* Assets.xcassets */,
+				31BB601C240AC1C300DC71C3 /* MainMenu.xib */,
+				31BB601F240AC1C300DC71C3 /* Info.plist */,
+				31BB6020240AC1C300DC71C3 /* Airy.entitlements */,
+			);
+			path = Airy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		31BB6014240AC1BD00DC71C3 /* Airy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 31BB6023240AC1C300DC71C3 /* Build configuration list for PBXNativeTarget "Airy" */;
+			buildPhases = (
+				31BB6011240AC1BD00DC71C3 /* Sources */,
+				31BB6012240AC1BD00DC71C3 /* Frameworks */,
+				31BB6013240AC1BD00DC71C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Airy;
+			productName = Airy;
+			productReference = 31BB6015240AC1BD00DC71C3 /* Airy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		31BB600D240AC1BD00DC71C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Art Ginzburg";
+				TargetAttributes = {
+					31BB6014240AC1BD00DC71C3 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 31BB6010240AC1BD00DC71C3 /* Build configuration list for PBXProject "Airy" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 31BB600C240AC1BD00DC71C3;
+			productRefGroup = 31BB6016240AC1BD00DC71C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				31BB6014240AC1BD00DC71C3 /* Airy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		31BB6013240AC1BD00DC71C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */,
+				31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		31BB6011240AC1BD00DC71C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
+				3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */,
+				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
+				31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */,
+				31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */,
+				3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		31BB601C240AC1C300DC71C3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				31BB601D240AC1C300DC71C3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		31BB6021240AC1C300DC71C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		31BB6022240AC1C300DC71C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		31BB6024240AC1C300DC71C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Airy/Airy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R2294BC6J8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Airy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.Airy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		31BB6025240AC1C300DC71C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Airy/Airy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = R2294BC6J8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Airy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.Airy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		31BB6010240AC1BD00DC71C3 /* Build configuration list for PBXProject "Airy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BB6021240AC1C300DC71C3 /* Debug */,
+				31BB6022240AC1C300DC71C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		31BB6023240AC1C300DC71C3 /* Build configuration list for PBXNativeTarget "Airy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31BB6024240AC1C300DC71C3 /* Debug */,
+				31BB6025240AC1C300DC71C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 31BB600D240AC1BD00DC71C3 /* Project object */;
+}
