@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,8 +20,49 @@
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
             </connections>
         </customObject>
+        <window title="HotKey Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="Nfx-nr-le7">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="158" width="250" height="100"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="xeE-Mi-B31">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-0h-kzN">
+                        <rect key="frame" x="14" y="32" width="115" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Set shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8l3-uO-1oO">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="register:" target="zGk-Zx-uS2" id="jhr-5s-KtR"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEI-4X-I9t">
+                        <rect key="frame" x="164" y="32" width="72" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SAt-xr-Ngm">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="unregister:" target="zGk-Zx-uS2" id="fMB-Tt-Hz5"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="27" y="-177"/>
+        </window>
         <menu id="bem-wD-BUb" userLabel="Status Menu">
             <items>
+                <menuItem title="Set HotKey" id="lWC-kX-wpO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" id="LCj-ve-BfE">
                     <connections>
@@ -30,5 +72,18 @@
             </items>
             <point key="canvasLocation" x="146" y="120"/>
         </menu>
+        <viewController id="zGk-Zx-uS2" customClass="PreferencesViewController" customModule="Airy" customModuleProvider="target">
+            <connections>
+                <outlet property="clearButton" destination="sEI-4X-I9t" id="Tp4-F4-kNL"/>
+                <outlet property="shortcutButton" destination="xT3-0h-kzN" id="hJM-n6-9vD"/>
+                <outlet property="view" destination="xeE-Mi-B31" id="4oc-mG-oqY"/>
+            </connections>
+        </viewController>
+        <customObject id="ZUC-8B-G6m" customClass="PreferencesWindowController" customModule="Airy" customModuleProvider="target">
+            <connections>
+                <outlet property="prefViewCon" destination="zGk-Zx-uS2" id="8go-Xw-RVH"/>
+                <outlet property="window" destination="Nfx-nr-le7" id="7MB-j8-z7b"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

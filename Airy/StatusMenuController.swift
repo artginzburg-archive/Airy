@@ -2,11 +2,17 @@ import Cocoa
 
 let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
+var action: (()->())? = nil
+
+func performAirpodsAction() {
+  if action != nil {
+    action!()
+  }
+}
+
 class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener {
   
   let bluetooth = BluetoothConnector()
-  
-  var action: (()->())? = nil
   
   @IBOutlet weak var statusMenu: NSMenu!
   
@@ -25,9 +31,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     mouseView.onLeftMouseDown = {
       button.highlight(true)
-      if self.action != nil {
-        self.action!()
-      }
+      performAirpodsAction()
     }
     
     mouseView.onLeftMouseUp = {
