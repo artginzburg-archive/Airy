@@ -20,17 +20,17 @@
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
             </connections>
         </customObject>
-        <window title="HotKey Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="Nfx-nr-le7">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
+        <window title="Airy HotKey" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="Nfx-nr-le7">
+            <windowStyleMask key="styleMask" titled="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="131" y="158" width="250" height="100"/>
+            <rect key="contentRect" x="131" y="158" width="166" height="41"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="xeE-Mi-B31">
-                <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="166" height="41"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-0h-kzN">
-                        <rect key="frame" x="14" y="32" width="115" height="32"/>
+                        <rect key="frame" x="8" y="1" width="127" height="42"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Set shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8l3-uO-1oO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -41,9 +41,9 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEI-4X-I9t">
-                        <rect key="frame" x="164" y="32" width="72" height="32"/>
+                        <rect key="frame" x="134" y="11" width="26" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SAt-xr-Ngm">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="SAt-xr-Ngm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -53,28 +53,29 @@
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="27" y="-177"/>
+            <point key="canvasLocation" x="-15" y="-206.5"/>
         </window>
-        <menu id="bem-wD-BUb" userLabel="Status Menu">
+        <menu showsStateColumn="NO" id="bem-wD-BUb" userLabel="Status Menu">
             <items>
-                <menuItem title="Set HotKey" id="lWC-kX-wpO">
+                <menuItem title="Set HotKey" indentationLevel="1" id="lWC-kX-wpO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
-                <menuItem title="Quit Airy" keyEquivalent="q" id="LCj-ve-BfE">
+                <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">
                     <connections>
                         <action selector="terminate:" target="-1" id="fgP-QA-FSt"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="146" y="120"/>
+            <point key="canvasLocation" x="-15" y="-88"/>
         </menu>
         <viewController id="zGk-Zx-uS2" customClass="PreferencesViewController" customModule="Airy" customModuleProvider="target">
             <connections>
                 <outlet property="clearButton" destination="sEI-4X-I9t" id="Tp4-F4-kNL"/>
+                <outlet property="setHotKeyButton" destination="lWC-kX-wpO" id="Uvi-EM-rWP"/>
                 <outlet property="shortcutButton" destination="xT3-0h-kzN" id="hJM-n6-9vD"/>
                 <outlet property="view" destination="xeE-Mi-B31" id="4oc-mG-oqY"/>
             </connections>
@@ -86,4 +87,7 @@
             </connections>
         </customObject>
     </objects>
+    <resources>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+    </resources>
 </document>

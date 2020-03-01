@@ -56,14 +56,14 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       button.image = NSImage(named: "icon-inverted")
       action = {
 //        self.disconnect(_:)
-        self.disconnect(Any?.self)
+        self.disconnect(button)
       }
       button.toolTip = bluetooth.bluetoothDevice.name
     } else {
       button.image = NSImage(named: "icon")
       action = {
 //        self.connect(_:)
-        self.connect(Any?.self)
+        self.connect(button)
       }
     }
   }
