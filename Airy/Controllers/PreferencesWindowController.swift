@@ -10,11 +10,8 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
   
   override func keyDown(with event: NSEvent) {
     super.keyDown(with: event)
-    print("keydown")
     if let vc = prefViewCon {
-      print("let vc")
       if vc.listening {
-        print("vc listening")
         vc.updateGlobalShortcut(event)
       }
     }

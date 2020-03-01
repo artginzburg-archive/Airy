@@ -79,22 +79,46 @@
 		31BB6017240AC1BD00DC71C3 /* Airy */ = {
 			isa = PBXGroup;
 			children = (
-				3179E817240B1DC00070C478 /* Extensions */,
 				31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */,
-				3179E82B240B38E10070C478 /* Storage.swift */,
 				31BB6026240AC28100DC71C3 /* StatusMenuController.swift */,
-				3179E825240B36AB0070C478 /* PreferencesViewController.swift */,
-				3179E827240B36CA0070C478 /* PreferencesWindowController.swift */,
-				3179E814240B19F90070C478 /* BluetoothConnector.swift */,
-				3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */,
 				3179E81A240B21220070C478 /* MouseHandlerView.swift */,
+				3179E817240B1DC00070C478 /* Extensions */,
+				31C6C083240BEBE400EAAD1D /* Controllers */,
+				31C6C081240BEB5F00EAAD1D /* BluetoothConnector */,
+				31C6C082240BEB8C00EAAD1D /* HotKey */,
 				31BB601A240AC1C300DC71C3 /* Assets.xcassets */,
 				31BB601C240AC1C300DC71C3 /* MainMenu.xib */,
-				3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */,
 				31BB601F240AC1C300DC71C3 /* Info.plist */,
 				31BB6020240AC1C300DC71C3 /* Airy.entitlements */,
 			);
 			path = Airy;
+			sourceTree = "<group>";
+		};
+		31C6C081240BEB5F00EAAD1D /* BluetoothConnector */ = {
+			isa = PBXGroup;
+			children = (
+				3179E814240B19F90070C478 /* BluetoothConnector.swift */,
+				3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */,
+			);
+			path = BluetoothConnector;
+			sourceTree = "<group>";
+		};
+		31C6C082240BEB8C00EAAD1D /* HotKey */ = {
+			isa = PBXGroup;
+			children = (
+				3179E82B240B38E10070C478 /* Storage.swift */,
+				3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */,
+			);
+			path = HotKey;
+			sourceTree = "<group>";
+		};
+		31C6C083240BEBE400EAAD1D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3179E825240B36AB0070C478 /* PreferencesViewController.swift */,
+				3179E827240B36CA0070C478 /* PreferencesWindowController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
