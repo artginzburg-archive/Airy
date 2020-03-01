@@ -20,6 +20,10 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     }
   }
   
+  @IBAction func escapeAction(_ sender: NSButton) {
+    NSApplication.shared.hide(sender)
+  }
+  
   override func showWindow(_ sender: Any?) {
     NSApplication.shared.activate(ignoringOtherApps: true)
     window?.makeKeyAndOrderFront(self)
