@@ -51,16 +51,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     self.setStatusItemIProps()
   }
   
-  func setStatusItemIProps() {
-    guard let button = statusItem.button else { return }
+  func menuNeedsUpdate(_ menu: NSMenu) {
+    checkBattery()
+  }
+  
+  func checkBattery() {
     
     if bluetooth.isConnected {
-      
-      button.image = NSImage(named: "icon-inverted")
-      action = {
-        self.disconnect(button)
-      }
-      button.toolTip = bluetooth.bluetoothDevice.name
       
       let commandLeft = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentLeft | tr -d \\; | awk '{print $3}'"
       let commandRight = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentRight | tr -d \\; | awk '{print $3}'"
@@ -75,7 +72,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
       let rightBattery = shell(commandRight)
       if rightBattery != "0" {
-       batteryString.append("  R: \(rightBattery)%")
+        batteryString.append("  R: \(rightBattery)%")
       }
       
       let caseBattery = shell(commandCase)
@@ -89,13 +86,37 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       }
       
     } else {
+      
+      batteryStatusButton.isHidden = true
+      
+    }
+    
+  }
+  
+  func setStatusItemIProps() {
+    
+    guard let button = statusItem.button else { return }
+    
+    checkBattery()
+    
+    if bluetooth.isConnected {
+      
+      button.image = NSImage(named: "icon-inverted")
+      action = {
+        self.disconnect(button)
+      }
+      button.toolTip = bluetooth.bluetoothDevice.name
+      
+    } else {
+      
       button.image = NSImage(named: "icon")
       action = {
         self.connect(button)
       }
       button.toolTip = ""
-      batteryStatusButton.isHidden = true
+      
     }
+    
   }
   
   func connected() {

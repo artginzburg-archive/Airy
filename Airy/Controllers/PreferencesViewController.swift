@@ -81,6 +81,8 @@ class PreferencesViewController: NSViewController {
     appDelegate.hotKey = nil
     shortcutButton.title = ""
     setHotKeyButton.title = "Set HotKey"
+    setHotKeyButton.keyEquivalent = ","
+    setHotKeyButton.keyEquivalentModifierMask = .command
     clearButton.isEnabled = false
     
     Storage.remove("globalKeybind.json", from: .documents)
@@ -99,6 +101,8 @@ class PreferencesViewController: NSViewController {
   func updateKeybindButton(_ globalKeybindPreference : GlobalKeybindPreferences) {
     shortcutButton.title = globalKeybindPreference.description
     setHotKeyButton.title = "HotKey: \(globalKeybindPreference.description)"
+    setHotKeyButton.keyEquivalent = ""
+    setHotKeyButton.keyEquivalentModifierMask.remove(setHotKeyButton.keyEquivalentModifierMask)
   }
   
 }

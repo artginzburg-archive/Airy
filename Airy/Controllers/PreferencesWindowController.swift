@@ -32,5 +32,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
     NSApplication.shared.activate(ignoringOtherApps: true)
     window?.makeKeyAndOrderFront(self)
     window?.makeKey()
+    
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    if appDelegate.hotKey == nil {
+      prefViewCon.register(sender!)
+    }
+    
   }
 }
