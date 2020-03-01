@@ -22,6 +22,13 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
   }
   
   override func showWindow(_ sender: Any?) {
+    let mouseLocation = NSEvent.mouseLocation
+    let windowSize = window?.frame
+    let windowLocation = NSPoint(x: mouseLocation.x - windowSize!.width / 2, y: mouseLocation.y - windowSize!.height / 2)
+    
+    if !window!.isMainWindow {
+      window?.setFrameOrigin(windowLocation)
+    }
     NSApplication.shared.activate(ignoringOtherApps: true)
     window?.makeKeyAndOrderFront(self)
     window?.makeKey()
