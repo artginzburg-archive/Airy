@@ -23,15 +23,18 @@
         <window title="Airy HotKey" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="Nfx-nr-le7">
             <windowStyleMask key="styleMask" titled="YES" texturedBackground="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="131" y="158" width="160" height="70"/>
+            <rect key="contentRect" x="131" y="158" width="156" height="70"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="xeE-Mi-B31">
-                <rect key="frame" x="0.0" y="0.0" width="160" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="156" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-0h-kzN">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xT3-0h-kzN">
                         <rect key="frame" x="5" y="9" width="127" height="42"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="GoH-xK-vhU"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="KPo-TS-bDd"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Set shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8l3-uO-1oO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -43,9 +46,11 @@ IA
                             <action selector="register:" target="zGk-Zx-uS2" id="jhr-5s-KtR"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y4g-iq-BKk">
-                        <rect key="frame" x="0.0" y="51" width="41" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4g-iq-BKk">
+                        <rect key="frame" x="1" y="52" width="35" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="bbA-at-hk5"/>
+                        </constraints>
                         <buttonCell key="cell" type="bevel" title="[ esc ]" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="RSS-7a-lji">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system" size="10"/>
@@ -58,18 +63,8 @@ Gw
                             <action selector="escapeAction:" target="ZUC-8B-G6m" id="nwf-42-SEr"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
-                        <rect key="frame" x="42" y="5" width="51" height="14"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="message" size="11"/>
-                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEI-4X-I9t">
-                        <rect key="frame" x="128" y="19" width="26" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sEI-4X-I9t">
+                        <rect key="frame" x="128" y="21" width="22" height="21"/>
                         <buttonCell key="cell" type="square" title="⌫" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="SAt-xr-Ngm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system" size="18"/>
@@ -81,9 +76,29 @@ CA
                             <action selector="unregister:" target="zGk-Zx-uS2" id="fMB-Tt-Hz5"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
+                        <rect key="frame" x="43" y="5" width="51" height="14"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
+                            <font key="font" metaFont="menu" size="11"/>
+                            <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="mIY-f5-3eH" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="45" id="2sq-0U-rHd"/>
+                    <constraint firstItem="xT3-0h-kzN" firstAttribute="top" secondItem="Y4g-iq-BKk" secondAttribute="bottom" constant="5" id="632-4f-6O1"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y4g-iq-BKk" secondAttribute="trailing" constant="20" symbolic="YES" id="9yi-EG-GTO"/>
+                    <constraint firstItem="Y4g-iq-BKk" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="1" id="Egr-vO-QSm"/>
+                    <constraint firstItem="sEI-4X-I9t" firstAttribute="leading" secondItem="xT3-0h-kzN" secondAttribute="trailing" constant="2" id="T8P-je-t4p"/>
+                    <constraint firstAttribute="bottom" secondItem="xT3-0h-kzN" secondAttribute="bottom" constant="16" id="Zz0-ya-vaf"/>
+                    <constraint firstItem="mIY-f5-3eH" firstAttribute="top" secondItem="xeE-Mi-B31" secondAttribute="top" constant="51" id="bkl-4K-XN1"/>
+                    <constraint firstItem="sEI-4X-I9t" firstAttribute="centerY" secondItem="xT3-0h-kzN" secondAttribute="centerY" id="pXC-Nc-oXq"/>
+                    <constraint firstItem="xT3-0h-kzN" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="11" id="qhe-gD-5lS"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mIY-f5-3eH" secondAttribute="trailing" constant="20" symbolic="YES" id="wsY-ct-zW1"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="-10.5" y="-215"/>
+            <point key="canvasLocation" x="-13" y="-215"/>
         </window>
         <menu showsStateColumn="NO" id="bem-wD-BUb" userLabel="Status Menu">
             <items>
