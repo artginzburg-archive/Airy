@@ -158,7 +158,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if bluetooth.isConnected {
       
-      button.image = NSImage(named: "icon-inverted")
+      button.image = NSImage(named: "statusIcon-filled")
       
       action = {
         self.disconnect(button)
@@ -167,7 +167,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
     } else {
       
-      button.image = NSImage(named: "icon")
+      button.image = NSImage(named: "statusIcon-contour")
       action = {
         self.connect(button)
       }
