@@ -109,15 +109,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         return a - b
       }
       
-      func mathOperation(someFunc:  (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
+      func mathOperation(someFunc: (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
         return  someFunc(a, b)
       }
       
-      let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
-      
-      if difference < 4 {
-        let miminalBattery = min(leftBattery, rightBattery)
-        batteryString = "\(miminalBattery)%"
+      if leftBattery != "0" && rightBattery != "0" {
+        let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
+        
+        if difference < 4 {
+          let miminalBattery = min(leftBattery, rightBattery)
+          batteryString = "\(miminalBattery)%"
+        }
       }
       
       let caseBattery = shell(commandCase).condenseWhitespace()
