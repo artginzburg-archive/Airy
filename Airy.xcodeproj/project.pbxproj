@@ -12,7 +12,7 @@
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
 		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
 		3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81A240B21220070C478 /* MouseHandlerView.swift */; };
-		3179E820240B2BFE0070C478 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* HotKey */; };
+		3179E820240B2BFE0070C478 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */; };
 		3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E825240B36AB0070C478 /* PreferencesViewController.swift */; };
 		3179E828240B36CA0070C478 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E827240B36CA0070C478 /* PreferencesWindowController.swift */; };
 		3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */; };
@@ -21,9 +21,11 @@
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
 		31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6026240AC28100DC71C3 /* StatusMenuController.swift */; };
+		3A5B34DE81B78C3DE96C6B67 /* Pods_Airy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE913F557AD57C7C961DFF75 /* Pods_Airy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.release.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.release.xcconfig"; sourceTree = "<group>"; };
 		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
 		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
 		3179E814240B19F90070C478 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		31BB601F240AC1C300DC71C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31BB6020240AC1C300DC71C3 /* Airy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Airy.entitlements; sourceTree = "<group>"; };
 		31BB6026240AC28100DC71C3 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		BE913F557AD57C7C961DFF75 /* Pods_Airy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA46CE378B9C77D16DD957A7 /* Pods-Airy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.debug.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3179E820240B2BFE0070C478 /* HotKey in Frameworks */,
+				3179E820240B2BFE0070C478 /* BuildFile in Frameworks */,
+				3A5B34DE81B78C3DE96C6B67 /* Pods_Airy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +73,8 @@
 			children = (
 				31BB6017240AC1BD00DC71C3 /* Airy */,
 				31BB6016240AC1BD00DC71C3 /* Products */,
+				DB9E917686A4117D54486998 /* Pods */,
+				5E3C3923B133978CD361AEFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +131,24 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		5E3C3923B133978CD361AEFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE913F557AD57C7C961DFF75 /* Pods_Airy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB9E917686A4117D54486998 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CE378B9C77D16DD957A7 /* Pods-Airy.debug.xcconfig */,
+				0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31BB6023240AC1C300DC71C3 /* Build configuration list for PBXNativeTarget "Airy" */;
 			buildPhases = (
+				2D5CAA5DF3F5522B8931DE09 /* [CP] Check Pods Manifest.lock */,
 				31BB6011240AC1BD00DC71C3 /* Sources */,
 				31BB6012240AC1BD00DC71C3 /* Frameworks */,
 				31BB6013240AC1BD00DC71C3 /* Resources */,
+				B08F8369083AAD28C758AF85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,7 +168,7 @@
 			);
 			name = Airy;
 			packageProductDependencies = (
-				3179E81F240B2BFE0070C478 /* HotKey */,
+				3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */,
 			);
 			productName = Airy;
 			productReference = 31BB6015240AC1BD00DC71C3 /* Airy.app */;
@@ -172,7 +199,7 @@
 			);
 			mainGroup = 31BB600C240AC1BD00DC71C3;
 			packageReferences = (
-				3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */,
+				3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 31BB6016240AC1BD00DC71C3 /* Products */;
 			projectDirPath = "";
@@ -194,6 +221,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D5CAA5DF3F5522B8931DE09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Airy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B08F8369083AAD28C758AF85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Airy/Pods-Airy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Airy/Pods-Airy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Airy/Pods-Airy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		31BB6011240AC1BD00DC71C3 /* Sources */ = {
@@ -343,6 +412,7 @@
 		};
 		31BB6024240AC1C300DC71C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA46CE378B9C77D16DD957A7 /* Pods-Airy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Airy/Airy.entitlements;
@@ -363,6 +433,7 @@
 		};
 		31BB6025240AC1C300DC71C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Airy/Airy.entitlements;
@@ -405,7 +476,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+		3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/HotKey";
 			requirement = {
@@ -416,9 +487,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3179E81F240B2BFE0070C478 /* HotKey */ = {
+		3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */;
+			package = 3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */;
 			productName = HotKey;
 		};
 /* End XCSwiftPackageProductDependency section */

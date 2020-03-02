@@ -106,11 +106,18 @@ CA
                 <menuItem title="Battery status" enabled="NO" indentationLevel="1" id="jcA-jm-EdQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Set HotKey" indentationLevel="1" id="lWC-kX-wpO">
+                <menuItem title="Preferences" id="mj0-D2-8mG">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>
-                    </connections>
+                    <menu key="submenu" title="Preferences" id="wS5-3o-tWe">
+                        <items>
+                            <menuItem title="Set HotKey" indentationLevel="1" id="lWC-kX-wpO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">
