@@ -81,7 +81,7 @@ CA
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
                         <rect key="frame" x="43" y="5" width="51" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="controlContent" size="11"/>
+                            <font key="font" metaFont="toolTip"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -107,6 +107,7 @@ CA
                 <menuItem title="Battery status" enabled="NO" indentationLevel="1" id="jcA-jm-EdQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Preferences" indentationLevel="1" id="mj0-D2-8mG">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Preferences" id="wS5-3o-tWe">
@@ -126,8 +127,16 @@ CA
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">
+                    <attributedString key="attributedTitle">
+                        <fragment content="Quit Airy">
+                            <attributes>
+                                <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <connections>
                         <action selector="animateQuit:" target="nL3-lv-TKq" id="9QC-CY-FLW"/>
                     </connections>
