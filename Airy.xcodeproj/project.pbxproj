@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */; };
 		3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */; };
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
 		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
 		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
 		3179E814240B19F90070C478 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
 		3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+momentaryHighlight.swift"; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		3179E817240B1DC00070C478 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
 				3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */,
 			);
 			path = Extensions;
@@ -205,6 +208,7 @@
 				31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */,
 				3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */,
 				3179E828240B36CA0070C478 /* PreferencesWindowController.swift in Sources */,
+				3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */,
 				3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */,
 				3179E82C240B38E10070C478 /* Storage.swift in Sources */,
 			);

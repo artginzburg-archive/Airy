@@ -65,17 +65,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
       var batteryString : String = ""
       
-      let leftBattery = shell(commandLeft)
+      let leftBattery = shell(commandLeft).condenseWhitespace()
       if leftBattery != "0" {
         batteryString.append("L: \(leftBattery)%")
       }
       
-      let rightBattery = shell(commandRight)
+      let rightBattery = shell(commandRight).condenseWhitespace()
       if rightBattery != "0" {
         batteryString.append("  R: \(rightBattery)%")
       }
       
-      let caseBattery = shell(commandCase)
+      let caseBattery = shell(commandCase).condenseWhitespace()
       if caseBattery != "0" {
         batteryString.append("  C: \(caseBattery)%")
       }
