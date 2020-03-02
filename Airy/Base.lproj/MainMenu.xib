@@ -80,7 +80,7 @@ CA
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
                         <rect key="frame" x="43" y="5" width="51" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="label" size="11"/>
+                            <font key="font" metaFont="menu" size="11"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -115,7 +115,7 @@ CA
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">
                     <connections>
-                        <action selector="terminate:" target="-1" id="fgP-QA-FSt"/>
+                        <action selector="animateQuit:" target="nL3-lv-TKq" id="9QC-CY-FLW"/>
                     </connections>
                 </menuItem>
             </items>
