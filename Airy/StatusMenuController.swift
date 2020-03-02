@@ -81,7 +81,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   func menuNeedsUpdate(_ menu: NSMenu) {
     checkBattery()
-
+    
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
   
@@ -108,11 +108,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       func differenceBetweenNumbers(a: Int, b:Int) -> (Int) {
         return a - b
       }
-
+      
       func mathOperation(someFunc:  (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
-          return  someFunc(a, b)
+        return  someFunc(a, b)
       }
-
+      
       let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
       
       if difference < 4 {
@@ -144,15 +144,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     checkBattery()
     
-//    NSAnimationContext.runAnimationGroup({_ in
-//      //Indicate the duration of the animation
-//      NSAnimationContext.current.duration = 5.0
-//      //What is being animated? In this example I’m making a view transparent
-//      button.animator().alphaValue = 0.0
-//    }, completionHandler:{
-//      //In here we add the code that should be triggered after the animation completes.
-//      print("Animation completed")
-//    })
+    //    NSAnimationContext.runAnimationGroup({_ in
+    //      //Indicate the duration of the animation
+    //      NSAnimationContext.current.duration = 5.0
+    //      //What is being animated? In this example I’m making a view transparent
+    //      button.animator().alphaValue = 0.0
+    //    }, completionHandler:{
+    //      //In here we add the code that should be triggered after the animation completes.
+    //      print("Animation completed")
+    //    })
     
     if bluetooth.isConnected {
       

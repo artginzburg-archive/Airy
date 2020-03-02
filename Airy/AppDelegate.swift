@@ -13,6 +13,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
   }
   
+  private func airPodsAndHighlight() {
+    if let button = statusItem.button {
+      button.momentaryHighlight()
+    }
+    performAirpodsAction()
+  }
+  
   public var hotKey: HotKey? {
     didSet {
       guard let hotKey = hotKey else {
@@ -20,10 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       }
       
       hotKey.keyDownHandler = {
-        if let button = statusItem.button {
-          button.momentaryHighlight()
-        }
-        performAirpodsAction()
+        self.airPodsAndHighlight()
       }
     }
   }
@@ -31,10 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldHandleReopen(_ sender: NSApplication,
                                      hasVisibleWindows flag: Bool) -> Bool
   {
-    if let button = statusItem.button {
-      button.momentaryHighlight()
-    }
-    performAirpodsAction()
+    airPodsAndHighlight()
     return true
   }
   
