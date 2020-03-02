@@ -118,6 +118,7 @@ CA
                                     <action selector="launchAtLoginClicked:" target="nL3-lv-TKq" id="poD-5s-WB3"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="UXc-xm-5b1"/>
                             <menuItem title="Set HotKey" id="lWC-kX-wpO">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
