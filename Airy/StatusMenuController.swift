@@ -116,7 +116,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       if leftBattery != "0" && rightBattery != "0" {
         let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
         
-        if difference < 4 {
+        if difference < 5 {
           let miminalBattery = min(leftBattery, rightBattery)
           batteryString = "\(miminalBattery)%"
         }
