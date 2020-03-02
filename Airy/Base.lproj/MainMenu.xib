@@ -102,9 +102,9 @@ CA
             </view>
             <point key="canvasLocation" x="-13" y="-215"/>
         </window>
-        <menu showsStateColumn="NO" id="bem-wD-BUb" userLabel="Status Menu">
+        <menu showsStateColumn="NO" autoenablesItems="NO" id="bem-wD-BUb" userLabel="Status Menu">
             <items>
-                <menuItem title="Battery status" enabled="NO" indentationLevel="1" id="jcA-jm-EdQ">
+                <menuItem title="Battery status" indentationLevel="1" id="jcA-jm-EdQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
