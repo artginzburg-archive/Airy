@@ -12,11 +12,12 @@
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
 		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
 		3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81A240B21220070C478 /* MouseHandlerView.swift */; };
-		3179E820240B2BFE0070C478 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */; };
+		3179E820240B2BFE0070C478 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* HotKey */; };
 		3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E825240B36AB0070C478 /* PreferencesViewController.swift */; };
 		3179E828240B36CA0070C478 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E827240B36CA0070C478 /* PreferencesWindowController.swift */; };
 		3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */; };
 		3179E82C240B38E10070C478 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E82B240B38E10070C478 /* Storage.swift */; };
+		31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */; };
 		31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */; };
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
@@ -35,6 +36,7 @@
 		3179E827240B36CA0070C478 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeybindPreferences.swift; sourceTree = "<group>"; };
 		3179E82B240B38E10070C478 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControlStateValue+extension.swift"; sourceTree = "<group>"; };
 		31BB6015240AC1BD00DC71C3 /* Airy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BB601A240AC1C300DC71C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3179E820240B2BFE0070C478 /* BuildFile in Frameworks */,
+				3179E820240B2BFE0070C478 /* HotKey in Frameworks */,
 				3A5B34DE81B78C3DE96C6B67 /* Pods_Airy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +93,7 @@
 			children = (
 				31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */,
 				31BB6026240AC28100DC71C3 /* StatusMenuController.swift */,
+				31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */,
 				3179E81A240B21220070C478 /* MouseHandlerView.swift */,
 				3179E817240B1DC00070C478 /* Extensions */,
 				31C6C083240BEBE400EAAD1D /* Controllers */,
@@ -145,7 +148,6 @@
 				FA46CE378B9C77D16DD957A7 /* Pods-Airy.debug.xcconfig */,
 				0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -168,7 +170,7 @@
 			);
 			name = Airy;
 			packageProductDependencies = (
-				3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */,
+				3179E81F240B2BFE0070C478 /* HotKey */,
 			);
 			productName = Airy;
 			productReference = 31BB6015240AC1BD00DC71C3 /* Airy.app */;
@@ -199,7 +201,7 @@
 			);
 			mainGroup = 31BB600C240AC1BD00DC71C3;
 			packageReferences = (
-				3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */,
+				3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = 31BB6016240AC1BD00DC71C3 /* Products */;
 			projectDirPath = "";
@@ -274,6 +276,7 @@
 				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
 				31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */,
 				3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */,
+				31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */,
 				31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */,
 				3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */,
 				3179E828240B36CA0070C478 /* PreferencesWindowController.swift in Sources */,
@@ -476,7 +479,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */ = {
+		3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/HotKey";
 			requirement = {
@@ -487,9 +490,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3179E81F240B2BFE0070C478 /* SwiftPackageProductDependency */ = {
+		3179E81F240B2BFE0070C478 /* HotKey */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3179E81E240B2BFE0070C478 /* RemoteSwiftPackageReference */;
+			package = 3179E81E240B2BFE0070C478 /* XCRemoteSwiftPackageReference "HotKey" */;
 			productName = HotKey;
 		};
 /* End XCSwiftPackageProductDependency section */

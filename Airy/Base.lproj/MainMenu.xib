@@ -18,6 +18,7 @@
         <customObject id="nL3-lv-TKq" customClass="StatusMenuController" customModule="Airy" customModuleProvider="target">
             <connections>
                 <outlet property="batteryStatusButton" destination="jcA-jm-EdQ" id="9pw-Dr-XKq"/>
+                <outlet property="launchAtLoginButton" destination="snt-4w-QPi" id="0cB-xT-gLo"/>
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
             </connections>
         </customObject>
@@ -80,7 +81,7 @@ CA
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
                         <rect key="frame" x="43" y="5" width="51" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="menu" size="11"/>
+                            <font key="font" metaFont="controlContent" size="11"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -106,11 +107,17 @@ CA
                 <menuItem title="Battery status" enabled="NO" indentationLevel="1" id="jcA-jm-EdQ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Preferences" id="mj0-D2-8mG">
+                <menuItem title="Preferences" indentationLevel="1" id="mj0-D2-8mG">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Preferences" id="wS5-3o-tWe">
                         <items>
-                            <menuItem title="Set HotKey" indentationLevel="1" id="lWC-kX-wpO">
+                            <menuItem title="Launch at Login" id="snt-4w-QPi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="launchAtLoginClicked:" target="nL3-lv-TKq" id="poD-5s-WB3"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Set HotKey" id="lWC-kX-wpO">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>

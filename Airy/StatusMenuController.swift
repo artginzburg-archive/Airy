@@ -1,4 +1,5 @@
 import Cocoa
+import LoginServiceKit
 
 let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
@@ -17,6 +18,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   @IBOutlet weak var statusMenu: NSMenu!
   
   @IBOutlet weak var batteryStatusButton: NSMenuItem!
+  
+  @IBOutlet weak var launchAtLoginButton: NSMenuItem!
+  @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
+    if LoginServiceKit.isExistLoginItems() {
+      LoginServiceKit.removeLoginItems()
+    } else {
+      LoginServiceKit.addLoginItems()
+    }
+  }
   
   @IBAction func animateQuit(_ sender: Any?) {
     NSAnimationContext.runAnimationGroup({_ in
@@ -71,6 +81,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   func menuNeedsUpdate(_ menu: NSMenu) {
     checkBattery()
+
+    launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
   
   func checkBattery() {
@@ -141,8 +153,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
 //      //In here we add the code that should be triggered after the animation completes.
 //      print("Animation completed")
 //    })
-    
-    
     
     if bluetooth.isConnected {
       
