@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31562549240ED701008AB761 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31562548240ED701008AB761 /* util.swift */; };
+		3156254B240EF76B008AB761 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156254A240EF76B008AB761 /* SwiftyTimer.swift */; };
 		3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */; };
 		3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */; };
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.release.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.release.xcconfig"; sourceTree = "<group>"; };
 		31562548240ED701008AB761 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		3156254A240EF76B008AB761 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
 		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
 		3179E814240B19F90070C478 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
 				3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */,
 				31913F57240DE40400EA4FE8 /* NSImage+extension.swift */,
+				3156254A240EF76B008AB761 /* SwiftyTimer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				31913F56240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift in Sources */,
 				3179E819240B1DD10070C478 /* NSStatusBarButton+extension.swift in Sources */,
 				3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */,
+				3156254B240EF76B008AB761 /* SwiftyTimer.swift in Sources */,
 				31562549240ED701008AB761 /* util.swift in Sources */,
 				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
 				31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */,

@@ -76,6 +76,19 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     }
   }
   
+  private var timer:Timer?
+  
+  func updateTimer() {
+    checkBattery()
+  }
+  
+  func initTimer() {
+    self.timer = Timer.new(every: 5.second) {
+      self.updateTimer()
+    }
+    self.timer!.start()
+  }
+  
   override func awakeFromNib() {
     statusItem.menu = statusMenu
     statusMenu.delegate = self
@@ -119,6 +132,10 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     bluetooth.register(listener: self)
     
     self.setStatusItemIProps()
+    
+    timer = nil
+    updateTimer()
+    initTimer()
   }
   
   func menuNeedsUpdate(_ menu: NSMenu) {
@@ -170,7 +187,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         return  someFunc(a, b)
       }
       
-      if leftBattery != "0" && rightBattery != "0" {
+      if !leftBatteryIsEmpty && !rightBatteryIsEmpty {
+        if let button = statusItem.button {
+          button.transition(statusIconFilled)
+        }
+        
         let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
         
         if difference < 5 {
