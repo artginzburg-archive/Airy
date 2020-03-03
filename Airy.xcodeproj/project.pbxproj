@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31562549240ED701008AB761 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31562548240ED701008AB761 /* util.swift */; };
 		3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */; };
 		3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */; };
 		3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E814240B19F90070C478 /* BluetoothConnector.swift */; };
-		3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */; };
+		3179E819240B1DD10070C478 /* NSStatusBarButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */; };
 		3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81A240B21220070C478 /* MouseHandlerView.swift */; };
 		3179E820240B2BFE0070C478 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 3179E81F240B2BFE0070C478 /* HotKey */; };
 		3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E825240B36AB0070C478 /* PreferencesViewController.swift */; };
@@ -29,10 +30,11 @@
 
 /* Begin PBXFileReference section */
 		0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.release.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.release.xcconfig"; sourceTree = "<group>"; };
+		31562548240ED701008AB761 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
 		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
 		3179E814240B19F90070C478 /* BluetoothConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnector.swift; sourceTree = "<group>"; };
-		3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+momentaryHighlight.swift"; sourceTree = "<group>"; };
+		3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+extension.swift"; sourceTree = "<group>"; };
 		3179E81A240B21220070C478 /* MouseHandlerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseHandlerView.swift; sourceTree = "<group>"; };
 		3179E825240B36AB0070C478 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		3179E827240B36CA0070C478 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 				31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */,
 				31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */,
 				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
-				3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */,
+				3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */,
 				31913F57240DE40400EA4FE8 /* NSImage+extension.swift */,
 			);
 			path = Extensions;
@@ -100,6 +102,7 @@
 			children = (
 				31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */,
 				31BB6026240AC28100DC71C3 /* StatusMenuController.swift */,
+				31562548240ED701008AB761 /* util.swift */,
 				3179E81A240B21220070C478 /* MouseHandlerView.swift */,
 				3179E817240B1DC00070C478 /* Extensions */,
 				31C6C083240BEBE400EAAD1D /* Controllers */,
@@ -278,8 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				31913F56240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift in Sources */,
-				3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
+				3179E819240B1DD10070C478 /* NSStatusBarButton+extension.swift in Sources */,
 				3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */,
+				31562549240ED701008AB761 /* util.swift in Sources */,
 				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
 				31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */,
 				3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */,

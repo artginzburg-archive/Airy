@@ -15,6 +15,9 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   let bluetooth = BluetoothConnector()
   
+  let statusIconFilled = NSImage(named: "statusIcon-filled")
+  let statusIconContour = NSImage(named: "statusIcon-contour")
+  
   @IBOutlet weak var statusMenu: NSMenu!
   
   @IBOutlet weak var batteryStatusButton: NSMenuItem!
@@ -33,7 +36,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       NSAnimationContext.current.duration = 0.2
       statusItem.button?.animator().alphaValue = 0
     }, completionHandler:{
-      print("Quit animation completed")
+//      print("Quit animation completed")
       NSApp.terminate(sender)
     })
   }
@@ -81,7 +84,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     guard let button = statusItem.button else { return }
     
     button.alphaValue = 0
-    let statusIcon = NSImage(named: "icon-contour")
+    let statusIcon = statusIconContour
     statusIcon?.isTemplate = true
     button.image = statusIcon
     button.target = self
@@ -90,7 +93,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       NSAnimationContext.current.duration = 0.3
       statusItem.button?.animator().alphaValue = 1
     }, completionHandler:{
-      print("Start animation completed")
+//      print("Start animation completed")
     })
     
     let mouseView = MouseHandlerView(frame: button.frame)
@@ -181,11 +184,9 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     guard let button = statusItem.button else { return }
     
     
-    let statusIconFilled = NSImage(named: "statusIcon-filled")
     let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
     let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
     
-    let statusIconContour = NSImage(named: "statusIcon-contour")
     let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
     let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
     
@@ -204,8 +205,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if bluetooth.isConnected {
       
-      button.image = statusIconFilled
-      
+      button.transition(statusIconFilled)
       action = {
         self.disconnect(button)
       }
@@ -213,7 +213,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
     } else {
       
-      button.image = statusIconContour
+      button.transition(statusIconContour)
       action = {
         self.connect(button)
       }
@@ -239,19 +239,4 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     bluetooth.disconnect()
   }
   
-}
-
-@discardableResult
-func shell(_ command: String) -> String {
-  let task = Process()
-  task.launchPath = "/bin/bash"
-  task.arguments = ["-c", command]
-  
-  let pipe = Pipe()
-  task.standardOutput = pipe
-  task.launch()
-  
-  let data = pipe.fileHandleForReading.readDataToEndOfFile()
-  
-  return NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
 }
