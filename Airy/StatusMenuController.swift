@@ -81,7 +81,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     guard let button = statusItem.button else { return }
     
     button.alphaValue = 0
-    let statusIcon = NSImage(named: "icon")
+    let statusIcon = NSImage(named: "icon-contour")
     statusIcon?.isTemplate = true
     button.image = statusIcon
     button.target = self
@@ -203,7 +203,10 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
     } else {
       
-      button.image = NSImage(named: "statusIcon-contour")
+      let statusIconContour = NSImage(named: "statusIcon-contour")
+      
+//      button.image = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
+      button.image = statusIconContour
       action = {
         self.connect(button)
       }
