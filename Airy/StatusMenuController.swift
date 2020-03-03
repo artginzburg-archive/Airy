@@ -41,6 +41,28 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   override func awakeFromNib() {
     statusItem.menu = statusMenu
     statusMenu.delegate = self
+    if let prefsItem = statusMenu.item(at: 2) {
+      if prefsItem.hasSubmenu {
+        let sub = prefsItem.submenu
+        guard let subItems = sub?.items else { return }
+        prefsItem.isHidden = true
+        statusMenu.showsStateColumn = true
+        for item in statusMenu.items {
+          item.indentationLevel = 0
+        }
+        for item in subItems {
+          print(item)
+          sub?.removeItem(item)
+          item.indentationLevel = 1
+          if item.isSeparatorItem {
+            statusMenu.insertItem(item, at: 4)
+          } else {
+            statusMenu.insertItem(item, at: 3)
+          }
+        }
+        statusMenu.removeItem(prefsItem)
+      }
+    }
     
     guard let button = statusItem.button else { return }
     

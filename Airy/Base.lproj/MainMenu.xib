@@ -119,8 +119,7 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="UXc-xm-5b1"/>
-                            <menuItem title="Set HotKey" id="lWC-kX-wpO">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Set HotKey" keyEquivalent="," id="lWC-kX-wpO">
                                 <connections>
                                     <action selector="showWindow:" target="ZUC-8B-G6m" id="xI3-5k-Fa2"/>
                                 </connections>
