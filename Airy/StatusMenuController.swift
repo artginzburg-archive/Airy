@@ -180,6 +180,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     guard let button = statusItem.button else { return }
     
+    let statusIconFilled = NSImage(named: "statusIcon-filled")
+    let statusIconContour = NSImage(named: "statusIcon-contour")
+    let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
+    let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
+    
     checkBattery()
     
     //    NSAnimationContext.runAnimationGroup({_ in
@@ -194,7 +199,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if bluetooth.isConnected {
       
-      button.image = NSImage(named: "statusIcon-filled")
+      button.image = statusIconFilled
       
       action = {
         self.disconnect(button)
@@ -203,9 +208,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
     } else {
       
-      let statusIconContour = NSImage(named: "statusIcon-contour")
-      
-//      button.image = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
       button.image = statusIconContour
       action = {
         self.connect(button)
