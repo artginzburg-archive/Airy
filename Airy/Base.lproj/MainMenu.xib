@@ -88,15 +88,34 @@ CA
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ens-bP-T1o" userLabel="[ cmdW ]">
+                        <rect key="frame" x="1" y="52" width="35" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="OJj-iJ-Ppf"/>
+                        </constraints>
+                        <buttonCell key="cell" type="bevel" title="[ esc ]" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="iWq-6L-Tw2">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system" size="10"/>
+                            <string key="keyEquivalent">w</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                        </buttonCell>
+                        <color key="contentTintColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <action selector="escapeAction:" target="ZUC-8B-G6m" id="rqm-Ng-aXT"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mIY-f5-3eH" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="45" id="2sq-0U-rHd"/>
                     <constraint firstItem="xT3-0h-kzN" firstAttribute="top" secondItem="Y4g-iq-BKk" secondAttribute="bottom" constant="5" id="632-4f-6O1"/>
+                    <constraint firstItem="Ens-bP-T1o" firstAttribute="baseline" secondItem="Y4g-iq-BKk" secondAttribute="baseline" id="7xJ-OY-ybX"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Y4g-iq-BKk" secondAttribute="trailing" constant="20" symbolic="YES" id="9yi-EG-GTO"/>
+                    <constraint firstItem="Ens-bP-T1o" firstAttribute="leading" secondItem="Y4g-iq-BKk" secondAttribute="leading" id="BeS-9V-3eg"/>
                     <constraint firstItem="Y4g-iq-BKk" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="1" id="Egr-vO-QSm"/>
                     <constraint firstItem="sEI-4X-I9t" firstAttribute="leading" secondItem="xT3-0h-kzN" secondAttribute="trailing" constant="2" id="T8P-je-t4p"/>
                     <constraint firstAttribute="bottom" secondItem="xT3-0h-kzN" secondAttribute="bottom" constant="16" id="Zz0-ya-vaf"/>
                     <constraint firstItem="mIY-f5-3eH" firstAttribute="top" secondItem="xeE-Mi-B31" secondAttribute="top" constant="51" id="bkl-4K-XN1"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ens-bP-T1o" secondAttribute="trailing" constant="20" symbolic="YES" id="cWO-B0-8Ld"/>
                     <constraint firstItem="sEI-4X-I9t" firstAttribute="centerY" secondItem="xT3-0h-kzN" secondAttribute="centerY" id="pXC-Nc-oXq"/>
                     <constraint firstItem="xT3-0h-kzN" firstAttribute="leading" secondItem="xeE-Mi-B31" secondAttribute="leading" constant="11" id="qhe-gD-5lS"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mIY-f5-3eH" secondAttribute="trailing" constant="20" symbolic="YES" id="wsY-ct-zW1"/>

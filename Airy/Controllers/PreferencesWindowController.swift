@@ -18,7 +18,7 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
   }
   
   @IBAction func escapeAction(_ sender: NSButton) {
-    NSApplication.shared.hide(sender)
+    window?.close()
   }
   
   override func showWindow(_ sender: Any?) {
