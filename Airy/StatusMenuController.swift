@@ -180,10 +180,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     guard let button = statusItem.button else { return }
     
+    
     let statusIconFilled = NSImage(named: "statusIcon-filled")
+    let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
+    let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
+    
     let statusIconContour = NSImage(named: "statusIcon-contour")
     let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
     let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
+    
     
     checkBattery()
     
