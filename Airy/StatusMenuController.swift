@@ -18,6 +18,9 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   let statusIconFilled = NSImage(named: "statusIcon-filled")
   let statusIconContour = NSImage(named: "statusIcon-contour")
   
+  let statusIconRight = NSImage(named: "statusIcon-right")
+  let statusIconLeft = NSImage(named: "statusIcon-left")
+  
   @IBOutlet weak var statusMenu: NSMenu!
   
   @IBOutlet weak var batteryStatusButton: NSMenuItem!
@@ -133,15 +136,30 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       let commandCase = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentCase | tr -d \\; | awk '{print $3}'"
       
       var batteryString : String = ""
+      var leftBatteryIsEmpty : Bool = true
+      var rightBatteryIsEmpty : Bool = true
       
       let leftBattery = shell(commandLeft).condenseWhitespace()
       if leftBattery != "0" {
+        leftBatteryIsEmpty = false
         batteryString.append("L: \(leftBattery)%")
       }
       
       let rightBattery = shell(commandRight).condenseWhitespace()
       if rightBattery != "0" {
+        rightBatteryIsEmpty = false
         batteryString.append("  R: \(rightBattery)%")
+      }
+      
+      if leftBatteryIsEmpty && !rightBatteryIsEmpty {
+        if let button = statusItem.button {
+          button.transition(statusIconRight)
+        }
+      }
+      if !leftBatteryIsEmpty && rightBatteryIsEmpty {
+        if let button = statusItem.button {
+          button.transition(statusIconLeft)
+        }
       }
       
       func differenceBetweenNumbers(a: Int, b:Int) -> (Int) {
@@ -183,15 +201,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     guard let button = statusItem.button else { return }
     
-    
-    let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
-    let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
-    
-    let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
-    let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
-    
-    
-    checkBattery()
+//    let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
+//    let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
+//
+//    let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
+//    let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
     
     //    NSAnimationContext.runAnimationGroup({_ in
     //      //Indicate the duration of the animation
@@ -220,6 +234,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       button.toolTip = ""
       
     }
+    
+    checkBattery()
     
   }
   
