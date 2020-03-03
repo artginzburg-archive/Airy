@@ -19,6 +19,8 @@
             <connections>
                 <outlet property="batteryStatusButton" destination="jcA-jm-EdQ" id="9pw-Dr-XKq"/>
                 <outlet property="launchAtLoginButton" destination="snt-4w-QPi" id="0cB-xT-gLo"/>
+                <outlet property="preferencesButton" destination="mj0-D2-8mG" id="gA6-v8-gpE"/>
+                <outlet property="smallPreferencesButton" destination="HnC-Il-7te" id="MYY-51-98l"/>
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
             </connections>
         </customObject>
@@ -127,6 +129,18 @@ CA
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Preferences" hidden="YES" enabled="NO" id="HnC-Il-7te">
+                    <attributedString key="attributedTitle">
+                        <fragment content="Preferences">
+                            <attributes>
+                                <font key="NSFont" metaFont="label" size="12"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="gGd-1f-BAm"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">
                     <attributedString key="attributedTitle">
                         <fragment content="Quit Airy">

@@ -38,30 +38,44 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     })
   }
   
-  override func awakeFromNib() {
-    statusItem.menu = statusMenu
-    statusMenu.delegate = self
-    if let prefsItem = statusMenu.item(at: 2) {
-      if prefsItem.hasSubmenu {
-        let sub = prefsItem.submenu
-        guard let subItems = sub?.items else { return }
-        prefsItem.isHidden = true
-        statusMenu.showsStateColumn = true
-        for item in statusMenu.items {
-          item.indentationLevel = 0
-        }
-        for item in subItems {
+  @IBOutlet weak var preferencesButton: NSMenuItem!
+  @IBOutlet weak var smallPreferencesButton: NSMenuItem!
+  
+  func expandPreferences() {
+    if preferencesButton.hasSubmenu {
+      let sub = preferencesButton.submenu
+      guard let subItems = sub?.items else { return }
+      
+      let preferencesButtonPosition = statusMenu.index(of: preferencesButton)
+      preferencesButton.isHidden = true
+      
+      statusMenu.showsStateColumn = true
+      for item in statusMenu.items {
+        item.indentationLevel = 0
+      }
+      for item in subItems {
+        if !item.isSeparatorItem {
           print(item)
           sub?.removeItem(item)
           item.indentationLevel = 1
-          if item.isSeparatorItem {
-            statusMenu.insertItem(item, at: 4)
-          } else {
-            statusMenu.insertItem(item, at: 3)
-          }
+          statusMenu.insertItem(item, at: preferencesButtonPosition + 1)
         }
-        statusMenu.removeItem(prefsItem)
       }
+      
+      statusMenu.removeItem(preferencesButton)
+      
+      smallPreferencesButton?.isHidden = false
+      statusMenu.removeItem(smallPreferencesButton!)
+      statusMenu.insertItem(smallPreferencesButton!, at: preferencesButtonPosition)
+    }
+  }
+  
+  override func awakeFromNib() {
+    statusItem.menu = statusMenu
+    statusMenu.delegate = self
+    
+    if UserDefaults.isFirstLaunch() {
+      expandPreferences()
     }
     
     guard let button = statusItem.button else { return }

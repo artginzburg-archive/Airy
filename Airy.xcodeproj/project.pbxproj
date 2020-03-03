@@ -18,6 +18,7 @@
 		3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */; };
 		3179E82C240B38E10070C478 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E82B240B38E10070C478 /* Storage.swift */; };
 		31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */; };
+		31913F56240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */; };
 		31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */; };
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
@@ -37,6 +38,7 @@
 		3179E829240B38380070C478 /* GlobalKeybindPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalKeybindPreferences.swift; sourceTree = "<group>"; };
 		3179E82B240B38E10070C478 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControlStateValue+extension.swift"; sourceTree = "<group>"; };
+		31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+isFirstLaunch.swift"; sourceTree = "<group>"; };
 		31BB6015240AC1BD00DC71C3 /* Airy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BB601A240AC1C300DC71C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		3179E817240B1DC00070C478 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */,
 				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
 				3179E818240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift */,
 			);
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31913F56240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift in Sources */,
 				3179E819240B1DD10070C478 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
 				3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */,
 				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
