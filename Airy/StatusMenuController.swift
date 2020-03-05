@@ -122,55 +122,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let connected = bluetooth.isConnected
     
     connectOrDisconnectButton.title = connected ? "Disconnect" : "Connect"
-//    print(smallBatteryButton.attributedTitle)
-//    smallBatteryButton.attributedTit
-    
-//    if let attributedTitle = smallBatteryButton.attributedTitle {
-//        var mutableAttributedTitle = NSAttributedString(attributedString: attributedTitle)
-//      mutableAttributedTitle.setValue("lol", forKey: "string")
-////        mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: "New title")
-//        smallBatteryButton.attributedTitle = mutableAttributedTitle
-//    }
-//    smallBatteryButton.attributedTitle?.setValue(smallBatteryButton.attributedTitle!.length + 1, forKey: "Length")
-//    smallBatteryButton.attributedTitle?.stringMutable = "Batteryl"
-//    smallBatteryButton.attributedTitle?.setValue("8", forKey: "length")
-//    smallBatteryButton.attributedTitle?.length
-//
     smallBatteryButton.isHidden = connected ? false : true
-    
-    if Storage.fileExists("globalKeybind.json", in: .documents) {
-      
-      let globalKeybinds = Storage.retrieve("globalKeybind.json", from: .documents, as: GlobalKeybindPreferences.self)
-      
-      var modifiers: NSEvent.ModifierFlags {
-        var stringBuilder: NSEvent.ModifierFlags = []
-//        if globalKeybinds.function {
-//          stringBuilder.update(with: .function)
-//        }
-        if globalKeybinds.control {
-          stringBuilder.update(with: .control)
-        }
-//        if globalKeybinds.option {
-//          stringBuilder.update(with: .option)
-//        }
-        if globalKeybinds.command {
-          stringBuilder.update(with: .command)
-        }
-//        if globalKeybinds.shift {
-//          stringBuilder.update(with: .shift)
-//        }
-//        if globalKeybinds.capsLock {
-//          stringBuilder.update(with: .capsLock)
-//        }
-        return stringBuilder
-      }
-      
-      connectOrDisconnectButton.keyEquivalent = globalKeybinds.characters?.lowercased() ?? ""
-       connectOrDisconnectButton.keyEquivalentModifierMask = modifiers
-      // Unfortunately, not all modifiers work from a StatusMenu. For example, Ctrl+Opt+`. In this case,
-      // just nothing happens. So, I excluded all modifiers except for control and command.
-    }
-    
     
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
@@ -206,7 +158,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   func updateTimer() {
     checkBattery()
-    checkInEar()
+    _ = checkInEar()
   }
   
   func initTimer() {
