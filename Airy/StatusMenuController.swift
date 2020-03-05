@@ -39,7 +39,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       NSAnimationContext.current.duration = 0.2
       statusItem.button?.animator().alphaValue = 0
     }, completionHandler:{
-//      print("Quit animation completed")
       NSApp.terminate(sender)
     })
   }
@@ -80,10 +79,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   func updateTimer() {
     checkBattery()
+    checkInEar()
   }
   
   func initTimer() {
-    self.timer = Timer.new(every: 5.second) {
+    self.timer = Timer.new(every: 1.second) {
       self.updateTimer()
     }
     self.timer!.start()
@@ -106,10 +106,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     button.target = self
     
     NSAnimationContext.runAnimationGroup({_ in
-      NSAnimationContext.current.duration = 0.3
+      NSAnimationContext.current.duration = 0.4
       statusItem.button?.animator().alphaValue = 1
-    }, completionHandler:{
-//      print("Start animation completed")
     })
     
     let mouseView = MouseHandlerView(frame: button.frame)
@@ -144,26 +142,58 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
   
+  func differenceBetweenNumbers(a: Int, b: Int) -> (Int) {
+    return a - b
+  }
+  
+  func mathOperation(someFunc: (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
+    return  someFunc(a, b)
+  }
+  
+  func getAirPodsProperty(_ property: String) -> String {
+    let command = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep \(property) | tr -d \\; | awk '{print $3}'"
+    return shell(command).condenseWhitespace()
+  }
+  
+  func checkInEar() {
+    let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0]
+    guard let button = statusItem.button else { return }
+
+    if bluetooth.isConnected && inEar == "1" {
+      if button.alphaValue == 0.5 {
+        print("button is disabled")
+
+        NSAnimationContext.runAnimationGroup({_ in
+          NSAnimationContext.current.duration = 1
+          button.animator().alphaValue = 1
+        })
+      }
+    } else {
+      if button.alphaValue == 1 {
+        NSAnimationContext.runAnimationGroup({_ in
+          NSAnimationContext.current.duration = 1
+          button.animator().alphaValue = 0.5
+        })
+      }
+    }
+  }
+  
   func checkBattery() {
     
     if bluetooth.isConnected {
-      
-      let commandLeft = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentLeft | tr -d \\; | awk '{print $3}'"
-      let commandRight = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentRight | tr -d \\; | awk '{print $3}'"
-      let commandCase = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep BatteryPercentCase | tr -d \\; | awk '{print $3}'"
       
       var batteryString : String = ""
       var leftBatteryIsEmpty : Bool = true
       var rightBatteryIsEmpty : Bool = true
       
-      let leftBattery = shell(commandLeft).condenseWhitespace()
-      if leftBattery != "0" {
+      let leftBattery = (getAirPodsProperty("BatteryPercentLeft") as NSString).integerValue
+      if leftBattery != 0 {
         leftBatteryIsEmpty = false
         batteryString.append("L: \(leftBattery)%")
       }
       
-      let rightBattery = shell(commandRight).condenseWhitespace()
-      if rightBattery != "0" {
+      let rightBattery = (getAirPodsProperty("BatteryPercentRight") as NSString).integerValue
+      if rightBattery != 0 {
         rightBatteryIsEmpty = false
         batteryString.append("  R: \(rightBattery)%")
       }
@@ -179,29 +209,21 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         }
       }
       
-      func differenceBetweenNumbers(a: Int, b:Int) -> (Int) {
-        return a - b
-      }
-      
-      func mathOperation(someFunc: (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
-        return  someFunc(a, b)
-      }
-      
       if !leftBatteryIsEmpty && !rightBatteryIsEmpty {
         if let button = statusItem.button {
           button.transition(statusIconFilled)
         }
         
-        let difference = mathOperation(someFunc: differenceBetweenNumbers, a: Int(leftBattery)!, b: Int(rightBattery)!)
+        let difference: Int = abs(mathOperation(someFunc: differenceBetweenNumbers, a: leftBattery, b: rightBattery))
         
         if difference < 5 {
-          let miminalBattery = min(leftBattery, rightBattery)
-          batteryString = "\(miminalBattery)%"
+          let minimalBattery = min(leftBattery, rightBattery)
+          batteryString = "\(minimalBattery)%"
         }
       }
       
-      let caseBattery = shell(commandCase).condenseWhitespace()
-      if caseBattery != "0" {
+      let caseBattery = (getAirPodsProperty("BatteryPercentCase") as NSString).integerValue
+      if caseBattery != 0 {
         batteryString.append("  C: \(caseBattery)%")
       }
       
@@ -222,11 +244,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     guard let button = statusItem.button else { return }
     
-//    let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
-//    let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
-//
-//    let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
-//    let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
+    //    let leftAirpodFilled = statusIconFilled?.trim(CGRect(x: 0, y: 0, width: ((statusIconFilled?.size.width)! / 2), height: (statusIconFilled?.size.height)!))
+    //    let rightAirpodFilled = statusIconFilled?.trim(CGRect(x: ((statusIconFilled?.size.width)! / 2), y: 0, width: (statusIconFilled?.size.width)!, height: (statusIconFilled?.size.height)!))
+    //
+    //    let leftAirpodContour = statusIconContour?.trim(CGRect(x: 0, y: 0, width: ((statusIconContour?.size.width)! / 2), height: (statusIconContour?.size.height)!))
+    //    let rightAirpodContour = statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!))
     
     //    NSAnimationContext.runAnimationGroup({_ in
     //      //Indicate the duration of the animation
