@@ -162,10 +162,10 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let maximumAlphaValue: CGFloat = 1
     let animationDuration: TimeInterval = 1
     
-    let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0]
+    let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger()
     guard let button = statusItem.button else { return }
     
-    if bluetooth.isConnected && inEar == "1" {
+    if bluetooth.isConnected && inEar == 1 {
       if button.alphaValue == minimumAlphaValue {
         NSAnimationContext.runAnimationGroup({_ in
           NSAnimationContext.current.duration = animationDuration
@@ -190,13 +190,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       var leftBatteryIsEmpty : Bool = true
       var rightBatteryIsEmpty : Bool = true
       
-      let leftBattery = (getAirPodsProperty("BatteryPercentLeft") as NSString).integerValue
+      let leftBattery = getAirPodsProperty("BatteryPercentLeft").toInteger()
       if leftBattery != 0 {
         leftBatteryIsEmpty = false
         batteryString.append("L: \(leftBattery)%")
       }
       
-      let rightBattery = (getAirPodsProperty("BatteryPercentRight") as NSString).integerValue
+      let rightBattery = getAirPodsProperty("BatteryPercentRight").toInteger()
       if rightBattery != 0 {
         rightBatteryIsEmpty = false
         batteryString.append("  R: \(rightBattery)%")
@@ -226,7 +226,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         }
       }
       
-      let caseBattery = (getAirPodsProperty("BatteryPercentCase") as NSString).integerValue
+      let caseBattery = getAirPodsProperty("BatteryPercentCase").toInteger()
       if caseBattery != 0 {
         batteryString.append("  C: \(caseBattery)%")
       }

@@ -68,7 +68,7 @@ class BluetoothConnector {
         let deviceName = device.name
         else { return }
       
-      if deviceName.hasSuffix("AirPods") {
+      if deviceName.hasSuffix("AirPods") && device.isHandsFreeDevice {
         address = addressString
         return
       }
