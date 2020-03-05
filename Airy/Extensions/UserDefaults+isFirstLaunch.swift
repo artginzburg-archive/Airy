@@ -2,7 +2,7 @@ import Foundation
 
 extension UserDefaults {
 
-  static func isFirstLaunch() -> Bool {
+  static var isFirstLaunch: Bool {
     let isFirstLaunch = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
 
     if isFirstLaunch {

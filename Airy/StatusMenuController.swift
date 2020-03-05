@@ -23,9 +23,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   @IBOutlet weak var statusMenu: NSMenu!
   
+  private var timer: Timer?
+  
   @IBOutlet weak var batteryStatusButton: NSMenuItem!
   
+  @IBOutlet weak var preferencesButton: NSMenuItem!
+  @IBOutlet weak var smallPreferencesButton: NSMenuItem!
+  
   @IBOutlet weak var launchAtLoginButton: NSMenuItem!
+  
   @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
     if LoginServiceKit.isExistLoginItems() {
       LoginServiceKit.removeLoginItems()
@@ -43,57 +49,11 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     })
   }
   
-  @IBOutlet weak var preferencesButton: NSMenuItem!
-  @IBOutlet weak var smallPreferencesButton: NSMenuItem!
-  
-  func expandPreferences() {
-    if preferencesButton.hasSubmenu {
-      let sub = preferencesButton.submenu
-      guard let subItems = sub?.items else { return }
-      
-      let preferencesButtonPosition = statusMenu.index(of: preferencesButton)
-      preferencesButton.isHidden = true
-      
-      statusMenu.showsStateColumn = true
-      for item in statusMenu.items {
-        item.indentationLevel = 0
-      }
-      for item in subItems {
-        if !item.isSeparatorItem {
-          print(item)
-          sub?.removeItem(item)
-          item.indentationLevel = 1
-          statusMenu.insertItem(item, at: preferencesButtonPosition + 1)
-        }
-      }
-      
-      statusMenu.removeItem(preferencesButton)
-      
-      smallPreferencesButton?.isHidden = false
-      statusMenu.removeItem(smallPreferencesButton!)
-      statusMenu.insertItem(smallPreferencesButton!, at: preferencesButtonPosition)
-    }
-  }
-  
-  private var timer:Timer?
-  
-  func updateTimer() {
-    checkBattery()
-    checkInEar()
-  }
-  
-  func initTimer() {
-    self.timer = Timer.new(every: 1.second) {
-      self.updateTimer()
-    }
-    self.timer!.start()
-  }
-  
   override func awakeFromNib() {
     statusItem.menu = statusMenu
     statusMenu.delegate = self
     
-    if UserDefaults.isFirstLaunch() {
+    if UserDefaults.isFirstLaunch {
       expandPreferences()
     }
     
@@ -142,6 +102,47 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
   
+  func expandPreferences() {
+    if preferencesButton.hasSubmenu {
+      let sub = preferencesButton.submenu
+      guard let subItems = sub?.items else { return }
+      
+      let preferencesButtonPosition = statusMenu.index(of: preferencesButton)
+      preferencesButton.isHidden = true
+      
+      statusMenu.showsStateColumn = true
+      for item in statusMenu.items {
+        item.indentationLevel = 0
+      }
+      for item in subItems {
+        if !item.isSeparatorItem {
+          print(item)
+          sub?.removeItem(item)
+          item.indentationLevel = 1
+          statusMenu.insertItem(item, at: preferencesButtonPosition + 1)
+        }
+      }
+      
+      statusMenu.removeItem(preferencesButton)
+      
+      smallPreferencesButton?.isHidden = false
+      statusMenu.removeItem(smallPreferencesButton!)
+      statusMenu.insertItem(smallPreferencesButton!, at: preferencesButtonPosition)
+    }
+  }
+  
+  func updateTimer() {
+    checkBattery()
+    checkInEar()
+  }
+  
+  func initTimer() {
+    self.timer = Timer.new(every: 1.second) {
+      self.updateTimer()
+    }
+    self.timer!.start()
+  }
+  
   func differenceBetweenNumbers(a: Int, b: Int) -> (Int) {
     return a - b
   }
@@ -156,23 +157,26 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   func checkInEar() {
+    
+    let minimumAlphaValue: CGFloat = 0.5
+    let maximumAlphaValue: CGFloat = 1
+    let animationDuration: TimeInterval = 1
+    
     let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0]
     guard let button = statusItem.button else { return }
-
+    
     if bluetooth.isConnected && inEar == "1" {
-      if button.alphaValue == 0.5 {
-        print("button is disabled")
-
+      if button.alphaValue == minimumAlphaValue {
         NSAnimationContext.runAnimationGroup({_ in
-          NSAnimationContext.current.duration = 1
-          button.animator().alphaValue = 1
+          NSAnimationContext.current.duration = animationDuration
+          button.animator().alphaValue = maximumAlphaValue
         })
       }
     } else {
-      if button.alphaValue == 1 {
+      if button.alphaValue == maximumAlphaValue {
         NSAnimationContext.runAnimationGroup({_ in
-          NSAnimationContext.current.duration = 1
-          button.animator().alphaValue = 0.5
+          NSAnimationContext.current.duration = animationDuration
+          button.animator().alphaValue = minimumAlphaValue
         })
       }
     }
