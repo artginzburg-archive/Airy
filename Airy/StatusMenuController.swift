@@ -2,6 +2,7 @@ import Cocoa
 import LoginServiceKit
 
 let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+var initialSquareLength: CGFloat = 0
 
 var action: (()->())? = nil
 
@@ -51,9 +52,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     NSAnimationContext.runAnimationGroup({_ in
       NSAnimationContext.current.duration = 0.2
       statusItem.button?.animator().alphaValue = 0
-    }, completionHandler:{
-      NSApp.terminate(sender)
     })
+    
+    statusItem.length = initialSquareLength
+    
+    let quitTimer = Timer.new(every: 10.millisecond) {
+      statusItem.length -= statusItem.length / initialSquareLength * 2.5
+      if statusItem.length <= 1 {
+        NSApp.terminate(sender)
+      }
+    }
+    quitTimer.start()
   }
   
   override func awakeFromNib() {
@@ -67,15 +76,19 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     guard let button = statusItem.button else { return }
     
     button.alphaValue = 0
+    
     let statusIcon = statusIconContour
     statusIcon?.isTemplate = true
     button.image = statusIcon
-    button.target = self
     
     NSAnimationContext.runAnimationGroup({_ in
-      NSAnimationContext.current.duration = 0.4
-      statusItem.button?.animator().alphaValue = 1
+      NSAnimationContext.current.duration = 0.6
+      statusItem.button?.animator().alphaValue = checkInEar() ? 1 : 0.5
     })
+    
+    initialSquareLength = (button.image?.size.width ?? 18) + (button.image?.size.width ?? 18) / 1.5
+    
+    button.target = self
     
     let mouseView = MouseHandlerView(frame: button.frame)
     
@@ -96,7 +109,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     bluetooth.register(listener: self)
     
-    self.setStatusItemIProps()
+    setStatusItemIProps()
     
     timer = nil
     updateTimer()
@@ -216,30 +229,37 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     return shell(command).condenseWhitespace()
   }
   
-  func checkInEar() {
+  func checkInEar() -> Bool {
+    
+    var returnValue: Bool = false
     
     let minimumAlphaValue: CGFloat = 0.5
     let maximumAlphaValue: CGFloat = 1
     let animationDuration: TimeInterval = 1
     
     let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger()
-    guard let button = statusItem.button else { return }
     
-    if bluetooth.isConnected && inEar == 1 {
-      if button.alphaValue == minimumAlphaValue {
-        NSAnimationContext.runAnimationGroup({_ in
-          NSAnimationContext.current.duration = animationDuration
-          button.animator().alphaValue = maximumAlphaValue
-        })
+    if let button = statusItem.button {
+      
+      if bluetooth.isConnected && inEar == 1 {
+        returnValue = true
+        if button.alphaValue == minimumAlphaValue {
+          NSAnimationContext.runAnimationGroup({_ in
+            NSAnimationContext.current.duration = animationDuration
+            button.animator().alphaValue = maximumAlphaValue
+          })
+        }
+      } else {
+        if button.alphaValue == maximumAlphaValue {
+          NSAnimationContext.runAnimationGroup({_ in
+            NSAnimationContext.current.duration = animationDuration
+            button.animator().alphaValue = minimumAlphaValue
+          })
+        }
       }
-    } else {
-      if button.alphaValue == maximumAlphaValue {
-        NSAnimationContext.runAnimationGroup({_ in
-          NSAnimationContext.current.duration = animationDuration
-          button.animator().alphaValue = minimumAlphaValue
-        })
-      }
+      
     }
+    return returnValue
   }
   
   func checkBattery() {
