@@ -18,9 +18,12 @@
         <customObject id="nL3-lv-TKq" customClass="StatusMenuController" customModule="Airy" customModuleProvider="target">
             <connections>
                 <outlet property="batteryStatusButton" destination="jcA-jm-EdQ" id="9pw-Dr-XKq"/>
+                <outlet property="caseBatteryStatusButton" destination="ucZ-Kf-aoF" id="wFH-5D-16T"/>
                 <outlet property="connectOrDisconnectButton" destination="Maf-GN-9uU" id="Efm-bU-fUU"/>
                 <outlet property="launchAtLoginButton" destination="snt-4w-QPi" id="0cB-xT-gLo"/>
+                <outlet property="nameButton" destination="AA0-o4-mcb" id="O8N-IX-hzn"/>
                 <outlet property="preferencesButton" destination="mj0-D2-8mG" id="gA6-v8-gpE"/>
+                <outlet property="secondaryBatteryButton" destination="mhF-2d-Dpc" id="COV-1q-X6s"/>
                 <outlet property="smallBatteryButton" destination="rbY-R2-fcB" id="Jx6-rq-P6g"/>
                 <outlet property="smallPreferencesButton" destination="HnC-Il-7te" id="MYY-51-98l"/>
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
@@ -127,13 +130,16 @@ CA
         </window>
         <menu showsStateColumn="NO" autoenablesItems="NO" id="bem-wD-BUb" userLabel="Status Menu">
             <items>
+                <menuItem title="Name" enabled="NO" indentationLevel="1" id="AA0-o4-mcb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem title="Connect/disconnect" indentationLevel="1" id="Maf-GN-9uU">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="connectOrDisconnectClicked:" target="nL3-lv-TKq" id="e16-52-r18"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="dPZ-Hg-IS5"/>
+                <menuItem isSeparatorItem="YES" hidden="YES" id="dPZ-Hg-IS5"/>
                 <menuItem title="Battery" enabled="NO" indentationLevel="1" id="rbY-R2-fcB">
                     <attributedString key="attributedTitle">
                         <fragment content="Battery">
@@ -145,7 +151,21 @@ CA
                     </attributedString>
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
+                <menuItem title="Battery will be shown here" enabled="NO" indentationLevel="1" id="mhF-2d-Dpc">
+                    <attributedString key="attributedTitle">
+                        <fragment content="Battery will be shown here">
+                            <attributes>
+                                <font key="NSFont" metaFont="controlContent" size="11"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem title="Battery status" indentationLevel="1" id="jcA-jm-EdQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Case Battery status" indentationLevel="1" id="ucZ-Kf-aoF">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="YhI-6O-QP6"/>
