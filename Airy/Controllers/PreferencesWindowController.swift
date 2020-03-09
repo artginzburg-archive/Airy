@@ -9,7 +9,8 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
   @IBOutlet weak var prefViewCon: PreferencesViewController!
   
   override func keyDown(with event: NSEvent) {
-    super.keyDown(with: event)
+//    commented next line in order to remove error sound
+//    super.keyDown(with: event)
     if let vc = prefViewCon {
       if vc.listening {
         vc.updateGlobalShortcut(event)

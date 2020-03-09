@@ -81,6 +81,7 @@ class PreferencesViewController: NSViewController {
     appDelegate.hotKey = nil
     shortcutButton.title = ""
     setHotKeyButton.title = "Set HotKey"
+    setHotKeyButton.attributedTitle = nil
     setHotKeyButton.keyEquivalent = ","
     setHotKeyButton.keyEquivalentModifierMask = .command
     clearButton.isEnabled = false
@@ -100,7 +101,16 @@ class PreferencesViewController: NSViewController {
   // Set the shortcut button to show the keys to press
   func updateKeybindButton(_ globalKeybindPreference : GlobalKeybindPreferences) {
     shortcutButton.title = globalKeybindPreference.description
-    setHotKeyButton.title = "HotKey: \(globalKeybindPreference.description)"
+    
+    let attributedQuote = NSMutableAttributedString(string: "HotKey: ", attributes: [
+      .foregroundColor: NSColor.secondaryLabelColor
+    ])
+    
+    let secondaryQuote = NSAttributedString(string: "\(globalKeybindPreference.description)")
+    
+    attributedQuote.append(secondaryQuote)
+    setHotKeyButton.attributedTitle = attributedQuote
+    
     setHotKeyButton.keyEquivalent = ""
     setHotKeyButton.keyEquivalentModifierMask.remove(setHotKeyButton.keyEquivalentModifierMask)
   }
