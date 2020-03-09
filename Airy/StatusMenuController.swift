@@ -67,7 +67,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     self.rightAirpodContour = (statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!)))!
     
     
-    if UserDefaults.isFirstLaunch {
+    if UserDefaults.isFirstLaunch || NSApp.isOptionKeyDown {
       expandPreferences()
     }
     
@@ -131,7 +131,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let connected = bluetooth.isConnected
     
     connectOrDisconnectButton.title = connected ? "Disconnect" : "Connect to AirPods"
-    connectOrDisconnectButton.indentationLevel = connected ? 2 : 1
+    connectOrDisconnectButton.indentationLevel = connected ? nameButton.indentationLevel + 1 : nameButton.indentationLevel
     nameButton.isHidden = connected ? false : true
     smallBatteryButton.isHidden = connected ? false : true
     statusMenu.item(at: statusMenu.index(of: smallBatteryButton) - 1)?.isHidden = connected ? false : true
@@ -150,13 +150,17 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
       statusMenu.showsStateColumn = true
       for item in statusMenu.items {
-        item.indentationLevel = 0
+        if item.indentationLevel > 0 {
+          item.indentationLevel = item.indentationLevel - 1
+        } else {
+          item.indentationLevel = 0
+        }
       }
       for item in subItems {
         if !item.isSeparatorItem {
           print(item)
           sub?.removeItem(item)
-          item.indentationLevel = 1
+          item.indentationLevel = item.indentationLevel + 1
           statusMenu.insertItem(item, at: preferencesButtonPosition + 1)
         }
       }
@@ -233,13 +237,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       let leftBattery = getAirPodsProperty("BatteryPercentLeft").toInteger()
       if leftBattery != 0 {
         leftBatteryIsEmpty = false
-        batteryString.append("L: \(leftBattery)%")
+        batteryString.append("L: \(leftBattery) %")
       }
       
       let rightBattery = getAirPodsProperty("BatteryPercentRight").toInteger()
       if rightBattery != 0 {
         rightBatteryIsEmpty = false
-        batteryString.append("  R: \(rightBattery)%")
+        batteryString.append("  R: \(rightBattery) %")
       }
       
       if leftBatteryIsEmpty && !rightBatteryIsEmpty {
@@ -262,7 +266,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         
         if difference < 5 {
           let minimalBattery = min(leftBattery, rightBattery)
-          batteryString = "\(minimalBattery)%"
+          batteryString = "\(minimalBattery) %"
         }
       }
       
