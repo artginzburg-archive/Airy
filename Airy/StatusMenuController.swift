@@ -56,20 +56,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     performAirpodsAction()
   }
   
-  @IBAction func animateQuit(_ sender: Any?) {
-    statusItem.button?.fade(0, 0.25)
-    
-    statusItem.length = initialSquareLength
-    
-    let quitTimer = Timer.new(every: 10.millisecond) {
-      statusItem.length -= statusItem.length / initialSquareLength * 2.5
-      if statusItem.length <= 1 {
-        NSApp.terminate(sender)
-      }
-    }
-    quitTimer.start()
-  }
-  
   override func awakeFromNib() {
     statusItem.menu = statusMenu
     statusMenu.delegate = self
@@ -103,15 +89,15 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     mouseView.onLeftMouseDown = {
       button.highlight(true)
-      performAirpodsAction()
+      if self.statusItemShouldShowMenu() {
+        button.performClick(NSApp.currentEvent)
+      } else {
+        performAirpodsAction()
+      }
     }
     
     mouseView.onLeftMouseUp = {
       button.highlight(false)
-    }
-    
-    mouseView.onRightMouseDown = {
-      button.performClick(NSApp.currentEvent)
     }
     
     button.addSubview(mouseView)
@@ -125,18 +111,22 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     initTimer()
   }
   
+  private func statusItemShouldShowMenu() -> Bool {
+    !NSApp.isLeftMouseDown || NSApp.isOptionKeyDown
+  }
+  
   func menuNeedsUpdate(_ menu: NSMenu) {
     checkBattery()
-
+    
     let quote = bluetooth.bluetoothDevice.name ?? "AirPods"
     let font = NSFont.systemFont(ofSize: 12)
     let attributes: [NSAttributedString.Key: Any] = [
-        .font: font
+      .font: font
     ]
     let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
     nameButton.attributedTitle = attributedQuote
     
-//    batteryStatusButton.image = leftAirpodFilled
+    //    batteryStatusButton.image = leftAirpodFilled
     
     let connected = bluetooth.isConnected
     
@@ -347,6 +337,19 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   func disconnect(_ sender: Any?) {
     bluetooth.disconnect()
+  }
+  
+  @IBAction func animateQuit(_ sender: Any?) {
+    statusItem.button?.fade(0, 0.25)
+    
+    statusItem.length = initialSquareLength
+    
+    Timer.new(every: 10.millisecond) {
+      statusItem.length -= statusItem.length / initialSquareLength * 2.5
+      if statusItem.length <= 1 {
+        NSApp.terminate(sender)
+      }
+    }.start()
   }
   
 }
