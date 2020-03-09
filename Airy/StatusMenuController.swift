@@ -57,10 +57,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   @IBAction func animateQuit(_ sender: Any?) {
-    NSAnimationContext.runAnimationGroup({_ in
-      NSAnimationContext.current.duration = 0.2
-      statusItem.button?.animator().alphaValue = 0
-    })
+    statusItem.button?.fade(0, 0.25)
     
     statusItem.length = initialSquareLength
     
@@ -96,10 +93,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     statusIcon?.isTemplate = true
     button.image = statusIcon
     
-    NSAnimationContext.runAnimationGroup({_ in
-      NSAnimationContext.current.duration = 0.6
-      statusItem.button?.animator().alphaValue = checkInEar() ? 1 : 0.5
-    })
+    button.fade(checkInEar() ? 1 : 0.5, 0.6)
     
     initialSquareLength = (button.image?.size.width ?? 18) + (button.image?.size.width ?? 18) / 1.5
     
@@ -224,18 +218,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       
       if bluetooth.isConnected && inEar == 1 {
         returnValue = true
+        
         if button.alphaValue == minimumAlphaValue {
-          NSAnimationContext.runAnimationGroup({_ in
-            NSAnimationContext.current.duration = animationDuration
-            button.animator().alphaValue = maximumAlphaValue
-          })
+          button.fade(maximumAlphaValue, animationDuration)
         }
       } else {
         if button.alphaValue == maximumAlphaValue {
-          NSAnimationContext.runAnimationGroup({_ in
-            NSAnimationContext.current.duration = animationDuration
-            button.animator().alphaValue = minimumAlphaValue
-          })
+          button.fade(minimumAlphaValue, animationDuration)
         }
       }
       

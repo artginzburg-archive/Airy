@@ -19,4 +19,12 @@ extension NSStatusBarButton
     layer?.add(animation, forKey: "ImageFade")
     self.image = to
   }
+  
+  func fade(_ to: CGFloat, _ duration: TimeInterval = 1)
+  {
+    NSAnimationContext.runAnimationGroup({_ in
+      NSAnimationContext.current.duration = duration
+      self.animator().alphaValue = to
+    })
+  }
 }
