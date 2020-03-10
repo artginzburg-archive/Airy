@@ -67,7 +67,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     self.rightAirpodContour = (statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!)))!
     
     
-    if UserDefaults.isFirstLaunch || NSApp.isOptionKeyDown {
+    if isFirstLaunch || NSApp.isOptionKeyDown {
       expandPreferences()
     }
     
@@ -158,7 +158,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       }
       for item in subItems {
         if !item.isSeparatorItem {
-          print(item)
           sub?.removeItem(item)
           item.indentationLevel = item.indentationLevel + 1
           statusMenu.insertItem(item, at: preferencesButtonPosition + 1)

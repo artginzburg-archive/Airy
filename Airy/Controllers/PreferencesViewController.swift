@@ -31,11 +31,29 @@ class PreferencesViewController: NSViewController {
     // Check to see if the keybind has been stored previously
     // If it has then update the UI with the below methods.
     if Storage.fileExists("globalKeybind.json", in: .documents) {
+      
       let globalKeybinds = Storage.retrieve("globalKeybind.json", from: .documents, as: GlobalKeybindPreferences.self)
       updateKeybindButton(globalKeybinds)
       updateClearButton(globalKeybinds)
+      
+    } else if isFirstLaunch {
+      
+      let globalKeybinds = GlobalKeybindPreferences(
+        function: false,
+        control: true,
+        command: true,
+        shift: false,
+        option: false,
+        capsLock: false,
+        carbonFlags: 4352,
+        characters: "c",
+        keyCode: 8
+      )
+      storeGlobalShortcut(globalKeybinds)
+      setHotKeyButton.keyEquivalent = ","
+      setHotKeyButton.keyEquivalentModifierMask = .command
+      
     }
-    
   }
   
   // When a shortcut has been pressed by the user, turn off listening so the window stops listening for keybinds
@@ -43,7 +61,7 @@ class PreferencesViewController: NSViewController {
   // Update the shortcut button to show the new keybind
   // Make the clear button enabled to users can remove the shortcut
   // Finally, tell AppDelegate to start listening for the new keybind
-  func updateGlobalShortcut(_ event : NSEvent) {
+  func updateGlobalShortcut(_ event: NSEvent) {
     self.listening = false
     
     if let characters = event.charactersIgnoringModifiers {
@@ -59,13 +77,17 @@ class PreferencesViewController: NSViewController {
         keyCode: UInt32(event.keyCode)
       )
       
-      Storage.store(newGlobalKeybind, to: .documents, as: "globalKeybind.json")
-      updateKeybindButton(newGlobalKeybind)
-      clearButton.isEnabled = true
-      let appDelegate = NSApplication.shared.delegate as! AppDelegate
-      appDelegate.hotKey = HotKey(keyCombo: KeyCombo(carbonKeyCode: UInt32(event.keyCode), carbonModifiers: event.modifierFlags.carbonFlags))
+      storeGlobalShortcut(newGlobalKeybind)
     }
     
+  }
+  
+  private func storeGlobalShortcut(_ keybind: GlobalKeybindPreferences) {
+    Storage.store(keybind, to: .documents, as: "globalKeybind.json")
+    updateKeybindButton(keybind)
+    clearButton.isEnabled = true
+    let appDelegate = NSApplication.shared.delegate as! AppDelegate
+    appDelegate.hotKey = HotKey(keyCombo: KeyCombo(carbonKeyCode: keybind.keyCode, carbonModifiers: keybind.carbonFlags))
   }
   
   // When the set shortcut button is pressed start listening for the new shortcut
@@ -79,7 +101,7 @@ class PreferencesViewController: NSViewController {
   @IBAction func unregister(_ sender: Any?) {
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
     appDelegate.hotKey = nil
-    shortcutButton.title = ""
+    shortcutButton.title = "Set HotKey"
     setHotKeyButton.title = "Set HotKey"
     setHotKeyButton.attributedTitle = nil
     setHotKeyButton.keyEquivalent = ","
