@@ -79,7 +79,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     statusIcon?.isTemplate = true
     button.image = statusIcon
     
-    button.fade(checkInEar() ? 1 : 0.5, 0.6)
+    button.fade(checkInEar() ? 1 : 0.6, 0.6)
     
     initialSquareLength = (button.image?.size.width ?? 18) + (button.image?.size.width ?? 18) / 1.5
     
@@ -203,7 +203,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     var returnValue: Bool = false
     
-    let minimumAlphaValue: CGFloat = 0.5
+    let minimumAlphaValue: CGFloat = 0.6
     let maximumAlphaValue: CGFloat = 1
     let animationDuration: TimeInterval = 1
     
@@ -211,17 +211,35 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if let button = statusItem.button {
       
-      if bluetooth.isConnected && inEar == 1 {
-        returnValue = true
-        
+      if bluetooth.isConnected {
+        if inEar == 1 {
+          returnValue = true
+          
+          if button.alphaValue == minimumAlphaValue {
+            button.fade(maximumAlphaValue, animationDuration)
+          }
+        } else {
+          if button.alphaValue == maximumAlphaValue {
+            button.fade(minimumAlphaValue, animationDuration)
+          }
+        }
+      } else {
         if button.alphaValue == minimumAlphaValue {
           button.fade(maximumAlphaValue, animationDuration)
         }
-      } else {
-        if button.alphaValue == maximumAlphaValue {
-          button.fade(minimumAlphaValue, animationDuration)
-        }
       }
+      
+//      if bluetooth.isConnected && inEar == 1 {
+//        returnValue = true
+//
+//        if button.alphaValue == minimumAlphaValue {
+//          button.fade(maximumAlphaValue, animationDuration)
+//        }
+//      } else {
+//        if button.alphaValue == maximumAlphaValue {
+//          button.fade(minimumAlphaValue, animationDuration)
+//        }
+//      }
       
     }
     return returnValue
