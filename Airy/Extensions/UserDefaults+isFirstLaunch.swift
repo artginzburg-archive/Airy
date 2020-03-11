@@ -3,11 +3,12 @@ import Foundation
 extension UserDefaults {
 
   static var isFirstLaunch: Bool {
-    let isFirstLaunch = !UserDefaults.standard.bool(forKey: "hasBeenLaunchedBefore")
+    let hasBeenLaunchedBefore = "hasBeenLaunchedBefore"
+    let isFirstLaunch = !standard.bool(forKey: hasBeenLaunchedBefore)
 
     if isFirstLaunch {
-      UserDefaults.standard.set(true, forKey: "hasBeenLaunchedBefore")
-      UserDefaults.standard.synchronize()
+      standard.set(true, forKey: hasBeenLaunchedBefore)
+      standard.synchronize()
     }
     return isFirstLaunch
   }
