@@ -102,6 +102,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     button.addSubview(mouseView)
     
+    button.setButtonType(.accelerator)
+    
     bluetooth.register(listener: self)
     
     setStatusItemIProps()

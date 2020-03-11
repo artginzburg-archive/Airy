@@ -25,6 +25,11 @@ extension NSStatusBarButton
     NSAnimationContext.runAnimationGroup({_ in
       NSAnimationContext.current.duration = duration
       self.animator().alphaValue = to
-    })
+    }
+//      ,completionHandler:{
+//        //In here we add the code that should be triggered after the animation completes.
+//        print("Animation completed")
+//      }
+    )
   }
 }
