@@ -31,8 +31,8 @@ extension NSApplication {
   var isShiftKeyDown: Bool { NSEvent.modifierFlags.contains(.shift) }
   
   func terminateAnimated(_ sender: Any?) {
-    if NSApp.isOptionKeyDown {
-      NSApp.terminate(sender)
+    if isOptionKeyDown {
+      terminate(sender)
     } else {
       statusItem.button?.fade(0, 0.25)
       
@@ -41,7 +41,7 @@ extension NSApplication {
       Timer.new(every: 10.millisecond) {
         statusItem.length -= statusItem.length / initialSquareLength * 2.5
         if statusItem.length <= 1 {
-          NSApp.terminate(sender)
+          self.terminate(sender)
         }
       }.start()
     }
