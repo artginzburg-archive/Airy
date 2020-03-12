@@ -363,16 +363,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   @IBAction func animateQuit(_ sender: Any?) {
-    statusItem.button?.fade(0, 0.25)
-    
-    statusItem.length = initialSquareLength
-    
-    Timer.new(every: 10.millisecond) {
-      statusItem.length -= statusItem.length / initialSquareLength * 2.5
-      if statusItem.length <= 1 {
-        NSApp.terminate(sender)
-      }
-    }.start()
+    NSApp.terminateAnimated(sender)
   }
   
 }

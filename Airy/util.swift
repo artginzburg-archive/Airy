@@ -28,4 +28,22 @@ extension NSMenuItem {
 extension NSApplication {
   var isLeftMouseDown: Bool { currentEvent?.type == .leftMouseDown }
   var isOptionKeyDown: Bool { NSEvent.modifierFlags.contains(.option) }
+  var isShiftKeyDown: Bool { NSEvent.modifierFlags.contains(.shift) }
+  
+  func terminateAnimated(_ sender: Any?) {
+    if NSApp.isOptionKeyDown {
+      NSApp.terminate(sender)
+    } else {
+      statusItem.button?.fade(0, 0.25)
+      
+      statusItem.length = initialSquareLength
+      
+      Timer.new(every: 10.millisecond) {
+        statusItem.length -= statusItem.length / initialSquareLength * 2.5
+        if statusItem.length <= 1 {
+          NSApp.terminate(sender)
+        }
+      }.start()
+    }
+  }
 }

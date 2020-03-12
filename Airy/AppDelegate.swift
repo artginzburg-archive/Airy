@@ -34,7 +34,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldHandleReopen(_ sender: NSApplication,
                                      hasVisibleWindows flag: Bool) -> Bool
   {
-    airPodsAndHighlight()
+    if NSApp.isShiftKeyDown {
+      statusItem.button!.performClick(NSApp.currentEvent)
+    } else {
+      airPodsAndHighlight()
+    }
     return true
   }
   
