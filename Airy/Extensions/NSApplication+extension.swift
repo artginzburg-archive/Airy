@@ -21,4 +21,19 @@ extension NSApplication {
       }.start()
     }
   }
+  
+  func animateStatusItemWake() {
+    if isShiftKeyDown { return }
+    
+    statusItem.length = 1
+
+    Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { timer in
+      if statusItem.length >= initialSquareLength - 1 {
+        statusItem.length = initialSquareLength
+        timer.invalidate()
+      } else {
+        statusItem.length += (initialSquareLength / (initialSquareLength / 2) - (statusItem.length / initialSquareLength * 2))
+      }
+    }
+  }
 }

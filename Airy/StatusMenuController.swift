@@ -83,6 +83,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     initialSquareLength = (button.image?.size.width ?? 18) + (button.image?.size.width ?? 18) / 1.5
     
+    NSApp.animateStatusItemWake()
+    
     button.target = self
     
     let mouseView = MouseHandlerView(frame: button.frame)
