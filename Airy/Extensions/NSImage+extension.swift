@@ -7,7 +7,7 @@ extension NSImage {
       result.lockFocus()
 
       let destRect = CGRect(origin: .zero, size: result.size)
-      self.draw(in: destRect, from: rect, operation: .copy, fraction: 1.0)
+      draw(in: destRect, from: rect, operation: .copy, fraction: 1.0)
 
       result.unlockFocus()
       return result

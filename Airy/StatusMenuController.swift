@@ -67,7 +67,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     self.rightAirpodContour = (statusIconContour?.trim(CGRect(x: ((statusIconContour?.size.width)! / 2), y: 0, width: (statusIconContour?.size.width)!, height: (statusIconContour?.size.height)!)))!
     
     
-    if isFirstLaunch || NSApp.isOptionKeyDown {
+    if Constants.isFirstLaunch || NSApp.isOptionKeyDown {
       expandPreferences()
     }
     
@@ -104,6 +104,10 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     button.setButtonType(.accelerator)
     
+//    let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways];
+//    let trackingArea = NSTrackingArea(rect: button.frame, options: options, owner: button, userInfo: nil)
+//    button.addTrackingArea(trackingArea)
+    
     bluetooth.register(listener: self)
     
     setStatusItemIProps()
@@ -127,8 +131,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     ]
     let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
     nameButton.attributedTitle = attributedQuote
-    
-    //    batteryStatusButton.image = leftAirpodFilled
     
     let connected = bluetooth.isConnected
     
@@ -195,8 +197,19 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   func getAirPodsProperty(_ property: String) -> String {
-    let command = "defaults read /Library/Preferences/com.apple.Bluetooth    | grep \(property) | tr -d \\; | awk '{print $3}'"
-    return shell(command).condenseWhitespace()
+    let bluetoothDefaults = UserDefaults(suiteName: "/Library/Preferences/com.apple.Bluetooth")
+    let deviceCache = bluetoothDefaults?.dictionary(forKey: "DeviceCache")
+    let airPodsDictionary = deviceCache?[bluetooth.bluetoothDevice.addressString]
+    let whitespaceCondensed = airPodsDictionary.debugDescription.condenseWhitespace()
+    let separated = whitespaceCondensed.components(separatedBy: ";")
+    var result: [String : String] = [:]
+    separated.forEach { sep in
+      let components = sep.condenseWhitespace().components(separatedBy: "=")
+      if components.count > 1 {
+        result[components[0].condenseWhitespace()] = components[1].condenseWhitespace()
+      }
+    }
+    return result[property]!
   }
   
   func checkInEar() -> Bool {
@@ -228,18 +241,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
           button.fade(maximumAlphaValue, animationDuration)
         }
       }
-      
-//      if bluetooth.isConnected && inEar == 1 {
-//        returnValue = true
-//
-//        if button.alphaValue == minimumAlphaValue {
-//          button.fade(maximumAlphaValue, animationDuration)
-//        }
-//      } else {
-//        if button.alphaValue == maximumAlphaValue {
-//          button.fade(minimumAlphaValue, animationDuration)
-//        }
-//      }
       
     }
     return returnValue
@@ -314,16 +315,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     guard let button = statusItem.button else { return }
     
-    //    NSAnimationContext.runAnimationGroup({_ in
-    //      //Indicate the duration of the animation
-    //      NSAnimationContext.current.duration = 5.0
-    //      //What is being animated? In this example I’m making a view transparent
-    //      button.animator().alphaValue = 0.0
-    //    }, completionHandler:{
-    //      //In here we add the code that should be triggered after the animation completes.
-    //      print("Animation completed")
-    //    })
-    
     if bluetooth.isConnected {
       
       button.transition(statusIconFilled)
@@ -367,3 +358,14 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
 }
+
+//extension NSStatusBarButton {
+//  override open func mouseExited(with event: NSEvent) {
+//    print("exited")
+//
+//  }
+//  override open func mouseEntered(with event: NSEvent) {
+//    print("entered")
+//
+//  }
+//}

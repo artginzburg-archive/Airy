@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3113969E2422A7BF007F8F16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3113969D2422A7BF007F8F16 /* Constants.swift */; };
 		31429A0524111C8C00638AB8 /* String+toInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31429A0424111C8C00638AB8 /* String+toInteger.swift */; };
-		31562549240ED701008AB761 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31562548240ED701008AB761 /* util.swift */; };
 		3156254B240EF76B008AB761 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156254A240EF76B008AB761 /* SwiftyTimer.swift */; };
 		3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */; };
 		3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */; };
@@ -23,6 +23,7 @@
 		31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */; };
 		31913F56240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */; };
 		31913F58240DE40400EA4FE8 /* NSImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31913F57240DE40400EA4FE8 /* NSImage+extension.swift */; };
+		31B35DC42422F699008CA192 /* NSApplication+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B35DC32422F698008CA192 /* NSApplication+extension.swift */; };
 		31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */; };
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
@@ -32,8 +33,8 @@
 
 /* Begin PBXFileReference section */
 		0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.release.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.release.xcconfig"; sourceTree = "<group>"; };
+		3113969D2422A7BF007F8F16 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		31429A0424111C8C00638AB8 /* String+toInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toInteger.swift"; sourceTree = "<group>"; };
-		31562548240ED701008AB761 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		3156254A240EF76B008AB761 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
 		3179E813240B19F90070C478 /* BluetoothConnectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothConnectorProtocol.swift; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSControlStateValue+extension.swift"; sourceTree = "<group>"; };
 		31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+isFirstLaunch.swift"; sourceTree = "<group>"; };
 		31913F57240DE40400EA4FE8 /* NSImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+extension.swift"; sourceTree = "<group>"; };
+		31B35DC32422F698008CA192 /* NSApplication+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApplication+extension.swift"; sourceTree = "<group>"; };
 		31BB6015240AC1BD00DC71C3 /* Airy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Airy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BB601A240AC1C300DC71C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */,
 				31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */,
+				31B35DC32422F698008CA192 /* NSApplication+extension.swift */,
 				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
 				31429A0424111C8C00638AB8 /* String+toInteger.swift */,
 				3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */,
@@ -108,7 +111,7 @@
 			children = (
 				31BB6018240AC1BE00DC71C3 /* AppDelegate.swift */,
 				31BB6026240AC28100DC71C3 /* StatusMenuController.swift */,
-				31562548240ED701008AB761 /* util.swift */,
+				3113969D2422A7BF007F8F16 /* Constants.swift */,
 				3179E81A240B21220070C478 /* MouseHandlerView.swift */,
 				3179E817240B1DC00070C478 /* Extensions */,
 				31C6C083240BEBE400EAAD1D /* Controllers */,
@@ -290,10 +293,10 @@
 				3179E819240B1DD10070C478 /* NSStatusBarButton+extension.swift in Sources */,
 				3179E81B240B21220070C478 /* MouseHandlerView.swift in Sources */,
 				3156254B240EF76B008AB761 /* SwiftyTimer.swift in Sources */,
-				31562549240ED701008AB761 /* util.swift in Sources */,
 				3179E816240B19F90070C478 /* BluetoothConnector.swift in Sources */,
 				31429A0524111C8C00638AB8 /* String+toInteger.swift in Sources */,
 				31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */,
+				31B35DC42422F699008CA192 /* NSApplication+extension.swift in Sources */,
 				3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */,
 				31913F58240DE40400EA4FE8 /* NSImage+extension.swift in Sources */,
 				31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */,
@@ -303,6 +306,7 @@
 				3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */,
 				3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */,
 				3179E82C240B38E10070C478 /* Storage.swift in Sources */,
+				3113969E2422A7BF007F8F16 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

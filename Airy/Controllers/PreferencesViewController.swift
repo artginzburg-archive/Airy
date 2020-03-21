@@ -30,13 +30,13 @@ class PreferencesViewController: NSViewController {
     
     // Check to see if the keybind has been stored previously
     // If it has then update the UI with the below methods.
-    if Storage.fileExists("globalKeybind.json", in: .documents) {
+    if Storage.fileExists(Constants.globalKeybindFilename, in: .documents) {
       
-      let globalKeybinds = Storage.retrieve("globalKeybind.json", from: .documents, as: GlobalKeybindPreferences.self)
+      let globalKeybinds = Storage.retrieve(Constants.globalKeybindFilename, from: .documents, as: GlobalKeybindPreferences.self)
       updateKeybindButton(globalKeybinds)
       updateClearButton(globalKeybinds)
       
-    } else if isFirstLaunch {
+    } else if Constants.isFirstLaunch {
       
       let globalKeybinds = GlobalKeybindPreferences(
         function: false,
@@ -83,7 +83,7 @@ class PreferencesViewController: NSViewController {
   }
   
   private func storeGlobalShortcut(_ keybind: GlobalKeybindPreferences) {
-    Storage.store(keybind, to: .documents, as: "globalKeybind.json")
+    Storage.store(keybind, to: .documents, as: Constants.globalKeybindFilename)
     updateKeybindButton(keybind)
     clearButton.isEnabled = true
     let appDelegate = NSApplication.shared.delegate as! AppDelegate
@@ -108,7 +108,7 @@ class PreferencesViewController: NSViewController {
     setHotKeyButton.keyEquivalentModifierMask = .command
     clearButton.isEnabled = false
     
-    Storage.remove("globalKeybind.json", from: .documents)
+    Storage.remove(Constants.globalKeybindFilename, from: .documents)
   }
   
   // If a keybind is set, allow users to clear it by enabling the clear button.
