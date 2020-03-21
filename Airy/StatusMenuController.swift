@@ -134,10 +134,10 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     connectOrDisconnectButton.title = connected ? "Disconnect" : "Connect to AirPods"
     connectOrDisconnectButton.indentationLevel = connected ? nameButton.indentationLevel + 1 : nameButton.indentationLevel
-    nameButton.isHidden = connected ? false : true
-    smallBatteryButton.isHidden = connected ? false : true
-    statusMenu.item(at: statusMenu.index(of: smallBatteryButton) - 1)?.isHidden = connected ? false : true
-    secondaryBatteryButton.isHidden = connected ? true : false
+    nameButton.isHidden = !connected
+    smallBatteryButton.isHidden = !connected
+    statusMenu.item(at: statusMenu.index(of: smallBatteryButton) - 1)?.isHidden = !connected
+    secondaryBatteryButton.isHidden = connected
     
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
   }
