@@ -45,11 +45,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   @IBOutlet weak var launchAtLoginButton: NSMenuItem!
   
   @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
-    if LoginServiceKit.isExistLoginItems() {
-      LoginServiceKit.removeLoginItems()
-    } else {
-      LoginServiceKit.addLoginItems()
-    }
+    LoginServiceKit.toggle()
   }
   
   @IBAction func connectOrDisconnectClicked(_ sender: NSMenuItem) {

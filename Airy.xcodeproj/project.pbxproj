@@ -28,6 +28,7 @@
 		31BB601B240AC1C300DC71C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601A240AC1C300DC71C3 /* Assets.xcassets */; };
 		31BB601E240AC1C300DC71C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31BB601C240AC1C300DC71C3 /* MainMenu.xib */; };
 		31BB6027240AC28100DC71C3 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB6026240AC28100DC71C3 /* StatusMenuController.swift */; };
+		31DC90D12426C80200BAAD89 /* LoginServiceKit+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DC90D02426C80200BAAD89 /* LoginServiceKit+extension.swift */; };
 		3A5B34DE81B78C3DE96C6B67 /* Pods_Airy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE913F557AD57C7C961DFF75 /* Pods_Airy.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		31BB601F240AC1C300DC71C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31BB6020240AC1C300DC71C3 /* Airy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Airy.entitlements; sourceTree = "<group>"; };
 		31BB6026240AC28100DC71C3 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		31DC90D02426C80200BAAD89 /* LoginServiceKit+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginServiceKit+extension.swift"; sourceTree = "<group>"; };
 		BE913F557AD57C7C961DFF75 /* Pods_Airy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Airy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA46CE378B9C77D16DD957A7 /* Pods-Airy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.debug.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				31913F55240DDE1400EA4FE8 /* UserDefaults+isFirstLaunch.swift */,
+				31DC90D02426C80200BAAD89 /* LoginServiceKit+extension.swift */,
 				31913F53240D8FA600EA4FE8 /* NSControlStateValue+extension.swift */,
 				31B35DC32422F698008CA192 /* NSApplication+extension.swift */,
 				3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */,
@@ -306,6 +309,7 @@
 				3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */,
 				3179E815240B19F90070C478 /* BluetoothConnectorProtocol.swift in Sources */,
 				3179E82C240B38E10070C478 /* Storage.swift in Sources */,
+				31DC90D12426C80200BAAD89 /* LoginServiceKit+extension.swift in Sources */,
 				3113969E2422A7BF007F8F16 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
