@@ -23,18 +23,18 @@ extension NSApplication {
     }
   }
   
-  func animateStatusItemWake(_ statusItem: NSStatusItem = statusItem, _ initialLength: CGFloat = initialSquareLength) {
-    if isShiftKeyDown { return }
-    
-    statusItem.length = 1
-
-    Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { timer in
-      if statusItem.length >= initialLength - 1 {
-        statusItem.length = initialLength
-        timer.invalidate()
-      } else {
-        statusItem.length += (initialLength / (initialLength / 2) - (statusItem.length / initialLength * 2))
-      }
-    }
-  }
+//  func animateStatusItemWake(_ statusItem: NSStatusItem = statusItem, _ initialLength: CGFloat = initialSquareLength) {
+//    if isShiftKeyDown { return }
+//    
+//    statusItem.length = 1
+//
+//    Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { timer in
+//      if statusItem.length >= initialLength - 1 {
+//        statusItem.length = initialLength
+//        timer.invalidate()
+//      } else {
+//        statusItem.length += (initialLength / (initialLength / 2) - (statusItem.length / initialLength * 2))
+//      }
+//    }
+//  }
 }
