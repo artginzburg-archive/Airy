@@ -79,8 +79,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     initialSquareLength = (button.image?.size.width ?? 18) + (button.image?.size.width ?? 18) / 1.5
     
-    NSApp.animateStatusItemWake()
-    
     button.target = self
     
     let mouseView = MouseHandlerView(frame: button.frame)
@@ -101,10 +99,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     button.addSubview(mouseView)
     
     button.setButtonType(.accelerator)
-    
-//    let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways];
-//    let trackingArea = NSTrackingArea(rect: button.frame, options: options, owner: button, userInfo: nil)
-//    button.addTrackingArea(trackingArea)
     
     bluetooth.register(listener: self)
     
@@ -194,22 +188,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     return  someFunc(a, b)
   }
   
-  func getAirPodsProperty(_ property: String) -> String {
-    let bluetoothDefaults = UserDefaults(suiteName: "/Library/Preferences/com.apple.Bluetooth")
-    let deviceCache = bluetoothDefaults?.dictionary(forKey: "DeviceCache")
-    let airPodsDictionary = deviceCache?[bluetooth.bluetoothDevice.addressString]
-    let whitespaceCondensed = airPodsDictionary.debugDescription.condenseWhitespace()
-    let separated = whitespaceCondensed.components(separatedBy: ";")
-    var result: [String : String] = [:]
-    separated.forEach { sep in
-      let components = sep.condenseWhitespace().components(separatedBy: "=")
-      if components.count > 1 {
-        result[components[0].condenseWhitespace()] = components[1].condenseWhitespace()
-      }
-    }
-    return result[property]!
-  }
-  
   func checkInEar() -> Bool {
     
     var returnValue: Bool = false
@@ -218,7 +196,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let maximumAlphaValue: CGFloat = 1
     let animationDuration: TimeInterval = 1
     
-    let inEar = getAirPodsProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger()
+    let inEar = bluetooth.bluetoothDevice.getProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger()
     
     if let button = statusItem.button {
       
@@ -252,13 +230,13 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       var leftBatteryIsEmpty : Bool = true
       var rightBatteryIsEmpty : Bool = true
       
-      let leftBattery = getAirPodsProperty("BatteryPercentLeft").toInteger()
+      let leftBattery = bluetooth.bluetoothDevice.getProperty("BatteryPercentLeft").toInteger()
       if leftBattery != 0 {
         leftBatteryIsEmpty = false
         batteryString.append("L: \(leftBattery) %")
       }
       
-      let rightBattery = getAirPodsProperty("BatteryPercentRight").toInteger()
+      let rightBattery = bluetooth.bluetoothDevice.getProperty("BatteryPercentRight").toInteger()
       if rightBattery != 0 {
         rightBatteryIsEmpty = false
         batteryString.append("  R: \(rightBattery) %")
@@ -289,7 +267,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       }
       
       caseBatteryStatusButton.isHidden = true
-      let caseBattery = getAirPodsProperty("BatteryPercentCase").toInteger()
+      let caseBattery = bluetooth.bluetoothDevice.getProperty("BatteryPercentCase").toInteger()
       if caseBattery != 0 {
         caseBatteryStatusButton.title = "Case: \(caseBattery) %"
         caseBatteryStatusButton.isHidden = false
@@ -356,14 +334,3 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
 }
-
-//extension NSStatusBarButton {
-//  override open func mouseExited(with event: NSEvent) {
-//    print("exited")
-//
-//  }
-//  override open func mouseEntered(with event: NSEvent) {
-//    print("entered")
-//
-//  }
-//}

@@ -78,3 +78,21 @@ class BluetoothConnector {
   }
   
 }
+
+extension IOBluetoothDevice {
+  func getProperty(_ property: String) -> String {
+    let bluetoothDefaults = UserDefaults(suiteName: "/Library/Preferences/com.apple.Bluetooth")
+    let deviceCache = bluetoothDefaults?.dictionary(forKey: "DeviceCache")
+    let deviceDictionary = deviceCache?[self.addressString]
+    let whitespaceCondensed = deviceDictionary.debugDescription.condenseWhitespace()
+    let separated = whitespaceCondensed.components(separatedBy: ";")
+    var result: [String : String] = [:]
+    separated.forEach { sep in
+      let components = sep.condenseWhitespace().components(separatedBy: "=")
+      if components.count > 1 {
+        result[components[0].condenseWhitespace()] = components[1].condenseWhitespace()
+      }
+    }
+    return result[property]!
+  }
+}
