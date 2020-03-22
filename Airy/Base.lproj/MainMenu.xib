@@ -25,7 +25,6 @@
                 <outlet property="preferencesButton" destination="mj0-D2-8mG" id="gA6-v8-gpE"/>
                 <outlet property="secondaryBatteryButton" destination="mhF-2d-Dpc" id="COV-1q-X6s"/>
                 <outlet property="smallBatteryButton" destination="rbY-R2-fcB" id="Jx6-rq-P6g"/>
-                <outlet property="smallPreferencesButton" destination="HnC-Il-7te" id="MYY-51-98l"/>
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
             </connections>
         </customObject>
@@ -88,7 +87,7 @@ CA
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
                         <rect key="frame" x="43" y="5" width="51" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="label" size="11"/>
+                            <font key="font" metaFont="controlContent" size="11"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -155,7 +154,7 @@ CA
                     <attributedString key="attributedTitle">
                         <fragment content="Battery will be shown here">
                             <attributes>
-                                <font key="NSFont" metaFont="label" size="11"/>
+                                <font key="NSFont" metaFont="controlContent" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -187,17 +186,6 @@ CA
                             </menuItem>
                         </items>
                     </menu>
-                </menuItem>
-                <menuItem title="Preferences" hidden="YES" enabled="NO" id="HnC-Il-7te">
-                    <attributedString key="attributedTitle">
-                        <fragment content="Preferences">
-                            <attributes>
-                                <font key="NSFont" metaFont="label" size="12"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="gGd-1f-BAm"/>
                 <menuItem title="Quit Airy" keyEquivalent="q" indentationLevel="1" id="LCj-ve-BfE">

@@ -40,7 +40,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   @IBOutlet weak var caseBatteryStatusButton: NSMenuItem!
   
   @IBOutlet weak var preferencesButton: NSMenuItem!
-  @IBOutlet weak var smallPreferencesButton: NSMenuItem!
   
   @IBOutlet weak var launchAtLoginButton: NSMenuItem!
   
@@ -64,7 +63,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     
     if Constants.isFirstLaunch || NSApp.isOptionKeyDown {
-      expandPreferences()
+      preferencesButton.expandSubmenu()
     }
     
     guard let button = statusItem.button else { return }
@@ -134,38 +133,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     secondaryBatteryButton.isHidden = connected
     
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
-  }
-  
-  func expandPreferences() {
-    if preferencesButton.hasSubmenu {
-      let sub = preferencesButton.submenu
-      guard let subItems = sub?.items else { return }
-      
-      let preferencesButtonPosition = statusMenu.index(of: preferencesButton)
-      preferencesButton.isHidden = true
-      
-      statusMenu.showsStateColumn = true
-      for item in statusMenu.items {
-        if item.indentationLevel > 0 {
-          item.indentationLevel = item.indentationLevel - 1
-        } else {
-          item.indentationLevel = 0
-        }
-      }
-      for item in subItems {
-        if !item.isSeparatorItem {
-          sub?.removeItem(item)
-          item.indentationLevel = item.indentationLevel + 1
-          statusMenu.insertItem(item, at: preferencesButtonPosition + 1)
-        }
-      }
-      
-      statusMenu.removeItem(preferencesButton)
-      
-      smallPreferencesButton?.isHidden = false
-      statusMenu.removeItem(smallPreferencesButton!)
-      statusMenu.insertItem(smallPreferencesButton!, at: preferencesButtonPosition)
-    }
   }
   
   func updateTimer() {

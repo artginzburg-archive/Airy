@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3113969E2422A7BF007F8F16 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3113969D2422A7BF007F8F16 /* Constants.swift */; };
+		3113E8052426F89400455808 /* NSMenuItem+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3113E8042426F89400455808 /* NSMenuItem+extension.swift */; };
 		31429A0524111C8C00638AB8 /* String+toInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31429A0424111C8C00638AB8 /* String+toInteger.swift */; };
 		3156254B240EF76B008AB761 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156254A240EF76B008AB761 /* SwiftyTimer.swift */; };
 		3156D27C240C9991001F7034 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		0FA37CB764DF0335EC146710 /* Pods-Airy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Airy.release.xcconfig"; path = "Target Support Files/Pods-Airy/Pods-Airy.release.xcconfig"; sourceTree = "<group>"; };
 		3113969D2422A7BF007F8F16 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3113E8042426F89400455808 /* NSMenuItem+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+extension.swift"; sourceTree = "<group>"; };
 		31429A0424111C8C00638AB8 /* String+toInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toInteger.swift"; sourceTree = "<group>"; };
 		3156254A240EF76B008AB761 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		3156D27B240C9991001F7034 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				3179E818240B1DD10070C478 /* NSStatusBarButton+extension.swift */,
 				31913F57240DE40400EA4FE8 /* NSImage+extension.swift */,
 				3156254A240EF76B008AB761 /* SwiftyTimer.swift */,
+				3113E8042426F89400455808 /* NSMenuItem+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				31B35DC42422F699008CA192 /* NSApplication+extension.swift in Sources */,
 				3179E82A240B38380070C478 /* GlobalKeybindPreferences.swift in Sources */,
 				31913F58240DE40400EA4FE8 /* NSImage+extension.swift in Sources */,
+				3113E8052426F89400455808 /* NSMenuItem+extension.swift in Sources */,
 				31913F54240D8FA600EA4FE8 /* NSControlStateValue+extension.swift in Sources */,
 				31BB6019240AC1BE00DC71C3 /* AppDelegate.swift in Sources */,
 				3179E826240B36AB0070C478 /* PreferencesViewController.swift in Sources */,
