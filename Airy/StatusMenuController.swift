@@ -1,20 +1,22 @@
 import Cocoa
 import LoginServiceKit
 
-let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-var initialSquareLength: CGFloat = 0
-
-var action: (()->())? = nil
-
-func performAirpodsAction() {
-  if action != nil {
-    action!()
-  }
-}
-
 class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener {
   
   let bluetooth = BluetoothConnector()
+  
+  var wasConnected: Bool = false
+   
+  var isConnected: Bool = false {
+    didSet {
+      if wasConnected != bluetooth.isConnected {
+        print("detected a change in connection status")
+        wasConnected = bluetooth.isConnected
+        
+        updateMenuForConnectionState(wasConnected)
+      }
+    }
+  }
   
   let statusIconFilled = NSImage(named: "statusIcon-filled")
   let statusIconContour = NSImage(named: "statusIcon-contour")
@@ -101,6 +103,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     bluetooth.register(listener: self)
     
+    isConnected = bluetooth.isConnected
+    
     setStatusItemIProps()
     
     timer = nil
@@ -123,16 +127,18 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
     nameButton.attributedTitle = attributedQuote
     
-    let connected = bluetooth.isConnected
-    
-    connectOrDisconnectButton.title = connected ? "Disconnect" : "Connect to AirPods"
-    connectOrDisconnectButton.indentationLevel = connected ? nameButton.indentationLevel + 1 : nameButton.indentationLevel
-    nameButton.isHidden = !connected
-    smallBatteryButton.isHidden = !connected
-    statusMenu.item(at: statusMenu.index(of: smallBatteryButton) - 1)?.isHidden = !connected
-    secondaryBatteryButton.isHidden = connected
+    updateMenuForConnectionState(isConnected)
     
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
+  }
+  
+  func updateMenuForConnectionState(_ isConnected: Bool) {
+    connectOrDisconnectButton.title = isConnected ? "Disconnect" : "Connect to AirPods"
+    connectOrDisconnectButton.indentationLevel = isConnected ? nameButton.indentationLevel + 1 : nameButton.indentationLevel
+    nameButton.isHidden = !isConnected
+    smallBatteryButton.isHidden = !isConnected
+    statusMenu.item(at: statusMenu.index(of: smallBatteryButton) - 1)?.isHidden = !isConnected
+    secondaryBatteryButton.isHidden = isConnected
   }
   
   func updateTimer() {
@@ -145,14 +151,6 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
       self.updateTimer()
     }
     self.timer!.start()
-  }
-  
-  func differenceBetweenNumbers(a: Int, b: Int) -> (Int) {
-    return a - b
-  }
-  
-  func mathOperation(someFunc: (Int, Int) -> Int, a: Int, b: Int) -> (Int) {
-    return  someFunc(a, b)
   }
   
   func checkInEar() -> Bool {
@@ -281,10 +279,12 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   func connected() {
+    isConnected = bluetooth.isConnected
     self.setStatusItemIProps()
   }
   
   func disconnected() {
+    isConnected = bluetooth.isConnected
     self.setStatusItemIProps()
   }
   
