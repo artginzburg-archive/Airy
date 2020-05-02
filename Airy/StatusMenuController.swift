@@ -38,7 +38,8 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   
   @IBOutlet weak var smallBatteryButton: NSMenuItem!
   @IBOutlet weak var secondaryBatteryButton: NSMenuItem!
-  @IBOutlet weak var batteryStatusButton: NSMenuItem!
+  @IBOutlet weak var leftOrCombinedBatteryStatusButton: NSMenuItem!
+  @IBOutlet weak var rightBatteryStatusButton: NSMenuItem!
   @IBOutlet weak var caseBatteryStatusButton: NSMenuItem!
   
   @IBOutlet weak var preferencesButton: NSMenuItem!
@@ -133,7 +134,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
   }
   
   func updateMenuForConnectionState(_ isConnected: Bool) {
-    connectOrDisconnectButton.title = isConnected ? "Disconnect" : "Connect to AirPods"
+    connectOrDisconnectButton.title = isConnected ? "Disconnect" : "Connect to \(bluetooth.bluetoothDevice.name ?? "AirPods")"
     connectOrDisconnectButton.indentationLevel = isConnected ? nameButton.indentationLevel + 1 : nameButton.indentationLevel
     nameButton.isHidden = !isConnected
     smallBatteryButton.isHidden = !isConnected
@@ -161,7 +162,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     let maximumAlphaValue: CGFloat = 1
     let animationDuration: TimeInterval = 1
     
-    let inEar = bluetooth.bluetoothDevice.getProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger()
+    let inEar = bluetooth.isConnected ? bluetooth.bluetoothDevice.getProperty("InEar").components(separatedBy: .whitespacesAndNewlines)[0].toInteger() : 0
     
     if let button = statusItem.button {
       
@@ -191,20 +192,23 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
     
     if bluetooth.isConnected {
       
-      var batteryString : String = ""
+      var leftBatteryString : String = ""
+      var rightBatteryString : String = ""
+      var combinedBatteryString : String = ""
+      
       var leftBatteryIsEmpty : Bool = true
       var rightBatteryIsEmpty : Bool = true
       
       let leftBattery = bluetooth.bluetoothDevice.getProperty("BatteryPercentLeft").toInteger()
       if leftBattery != 0 {
         leftBatteryIsEmpty = false
-        batteryString.append("L: \(leftBattery) %")
+        leftBatteryString = "L: \(leftBattery) %"
       }
       
       let rightBattery = bluetooth.bluetoothDevice.getProperty("BatteryPercentRight").toInteger()
       if rightBattery != 0 {
         rightBatteryIsEmpty = false
-        batteryString.append("  R: \(rightBattery) %")
+        rightBatteryString = "R: \(rightBattery) %"
       }
       
       if leftBatteryIsEmpty && !rightBatteryIsEmpty {
@@ -227,7 +231,7 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         
         if difference < 5 {
           let minimalBattery = min(leftBattery, rightBattery)
-          batteryString = "\(minimalBattery) %"
+          combinedBatteryString = "\(minimalBattery) %"
         }
       }
       
@@ -238,14 +242,26 @@ class StatusMenuController: NSObject, NSMenuDelegate, BluetoothConnectorListener
         caseBatteryStatusButton.isHidden = false
       }
       
-      if !batteryString.isEmpty {
-        batteryStatusButton.isHidden = false
-        batteryStatusButton.title = batteryString
+      if !leftBatteryString.isEmpty {
+        leftOrCombinedBatteryStatusButton.isHidden = false
+        leftOrCombinedBatteryStatusButton.title = leftBatteryString
+      }
+      
+      if !rightBatteryString.isEmpty {
+        rightBatteryStatusButton.isHidden = false
+        rightBatteryStatusButton.title = rightBatteryString
+      }
+      
+      if !combinedBatteryString.isEmpty {
+        leftOrCombinedBatteryStatusButton.isHidden = false
+        leftOrCombinedBatteryStatusButton.title = combinedBatteryString
+        rightBatteryStatusButton.isHidden = true
       }
       
     } else {
       
-      batteryStatusButton.isHidden = true
+      leftOrCombinedBatteryStatusButton.isHidden = true
+      rightBatteryStatusButton.isHidden = true
       caseBatteryStatusButton.isHidden = true
       
     }

@@ -17,12 +17,13 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="nL3-lv-TKq" customClass="StatusMenuController" customModule="Airy" customModuleProvider="target">
             <connections>
-                <outlet property="batteryStatusButton" destination="jcA-jm-EdQ" id="9pw-Dr-XKq"/>
                 <outlet property="caseBatteryStatusButton" destination="ucZ-Kf-aoF" id="wFH-5D-16T"/>
                 <outlet property="connectOrDisconnectButton" destination="Maf-GN-9uU" id="Efm-bU-fUU"/>
                 <outlet property="launchAtLoginButton" destination="snt-4w-QPi" id="0cB-xT-gLo"/>
+                <outlet property="leftOrCombinedBatteryStatusButton" destination="jcA-jm-EdQ" id="W4U-Pk-yai"/>
                 <outlet property="nameButton" destination="AA0-o4-mcb" id="O8N-IX-hzn"/>
                 <outlet property="preferencesButton" destination="mj0-D2-8mG" id="gA6-v8-gpE"/>
+                <outlet property="rightBatteryStatusButton" destination="WPY-P7-6G6" id="FpS-im-95f"/>
                 <outlet property="secondaryBatteryButton" destination="mhF-2d-Dpc" id="COV-1q-X6s"/>
                 <outlet property="smallBatteryButton" destination="rbY-R2-fcB" id="Jx6-rq-P6g"/>
                 <outlet property="statusMenu" destination="bem-wD-BUb" id="Dpv-7Q-WU4"/>
@@ -87,7 +88,7 @@ CA
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-f5-3eH">
                         <rect key="frame" x="43" y="5" width="51" height="14"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="[ space ]" id="MO5-2P-CRw">
-                            <font key="font" metaFont="controlContent" size="11"/>
+                            <font key="font" metaFont="label" size="11"/>
                             <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -154,14 +155,17 @@ CA
                     <attributedString key="attributedTitle">
                         <fragment content="Battery will be shown here">
                             <attributes>
-                                <font key="NSFont" metaFont="controlContent" size="11"/>
+                                <font key="NSFont" metaFont="label" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Battery status" indentationLevel="1" id="jcA-jm-EdQ">
+                <menuItem title="Left/Combined Battery status" indentationLevel="1" id="jcA-jm-EdQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Right Battery status" id="WPY-P7-6G6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="Case Battery status" indentationLevel="1" id="ucZ-Kf-aoF">
